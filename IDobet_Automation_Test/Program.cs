@@ -34,13 +34,17 @@ namespace IDobet_Automation_Test
         public void ExecuiteTest()
         {
             //Title
-            SeleniumSetMethod.SlectDropDown(driver, "TitleId", "Mr.", "Id");
+            SeleniumSetMethods.SlectDropDown(driver, "TitleId", "Mr.", "Id");
 
             //Intail
-            SeleniumSetMethod.EnterText(driver, "Initial", "executeautomation", "Name");
+            SeleniumSetMethods.EnterText(driver, "Initial", "executeautomation", "Name");
 
-            //Click cc
-            SeleniumSetMethod.Click(driver, "Save", "Name");
+            Console.WriteLine("The value from my title is: " + SeleniumGetMethods.GetText(driver,"TitleId","Id"));
+
+            Console.WriteLine("The value from my Intail is: " + SeleniumGetMethods.GetText(driver,"Intail","Name"));
+
+            //Click
+            SeleniumSetMethods.Click(driver, "Save", "Name");
         }
 
         [Test]

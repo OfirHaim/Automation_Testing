@@ -60,7 +60,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeleniumSetMethod.cs" />
+    <Compile Include="SeleniumGetMethod.cs" />
+    <Compile Include="SeleniumSetMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,7 +9,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace IDobet_Automation_Test
 {
-    class SeleniumSetMethod
+    class SeleniumSetMethods
     {
         //Enter Text
         public static void EnterText(IWebDriver driver,string element, string value, string elementtype)
