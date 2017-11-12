@@ -1,0 +1,15 @@
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.exe.config
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.exe
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.pdb
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\WebDriver.dll
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\WebDriver.Support.dll
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\WebDriver.xml
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\WebDriver.Support.xml
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.csprojResolveAssemblyReference.cache
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.exe
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.pdb
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\nunit.framework.dll
+D:\ofir\IDobet_Automation_Test\IDobet_Automation_Test\bin\Debug\nunit.framework.xml
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.exe.config
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.exe
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.pdb
