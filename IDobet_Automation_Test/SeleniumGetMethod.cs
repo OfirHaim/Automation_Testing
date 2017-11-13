@@ -16,6 +16,8 @@ namespace IDobet_Automation_Test
                 return driver.FindElement(By.Id(element)).Text;
             if (elementtype == "name")
                 return driver.FindElement(By.Name(element)).Text;
+            if (elementtype == "class")
+                return driver.FindElement(By.ClassName(element)).Text;
             else return string.Empty;
         }
 

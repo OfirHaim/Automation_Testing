@@ -16,17 +16,29 @@ namespace IDobet_Automation_Test
         {
             if(elementtype == "id")
                 driver.FindElement(By.Id(element)).SendKeys(value);
-            if (elementtype == "Name")
+            if (elementtype == "name")
                 driver.FindElement(By.Name(element)).SendKeys(value);
+            if (elementtype == "class")
+                driver.FindElement(By.ClassName(element)).SendKeys(value);
+
         }
 
         //Click into a button , Checkbox, Optin etc
         public static void Click(IWebDriver driver, string element, string elementtype)
         {
-            if (elementtype == "id")
-                driver.FindElement(By.Id(element)).Click();
-            if (elementtype == "Name")
-                driver.FindElement(By.Name(element)).Click();
+            switch (elementtype)
+            {
+                case "id":
+                    driver.FindElement(By.Id(element)).Click();
+                    break;
+                case "name":
+                    driver.FindElement(By.Name(element)).Click();
+                    break;
+                case "class":
+                    driver.FindElement(By.ClassName(element)).Click();
+                    break;
+            }
+
         }
 
         //Slecting a drop down control
@@ -34,8 +46,9 @@ namespace IDobet_Automation_Test
         {
             if (elementtype == "id")
                 new SelectElement(driver.FindElement(By.Id(element))).SelectByText(value);
-
-            if (elementtype == "Name")
+            if (elementtype == "name")
+                new SelectElement(driver.FindElement(By.Name(element))).SelectByText(value);
+            if (elementtype == "class")
                 new SelectElement(driver.FindElement(By.Name(element))).SelectByText(value);
         }
     }
