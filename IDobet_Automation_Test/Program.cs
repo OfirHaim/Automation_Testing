@@ -20,43 +20,47 @@ namespace IDobet_Automation_Test
 
         //SetUp run Before any test
         [SetUp]
-        public void Initialize()
+        public void Initialize()   
         {
             //write to the console
-            Console.WriteLine("OpenUrl");
+                Console.WriteLine("OpenUrl");
 
             //neavigate to any url 
-            driver.Navigate().GoToUrl("http://qa.idobet.com/online");
+                driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html?UserName=&amp;Password=&amp;Login=Login﻿");
 
             //Maximize to full screen
-            driver.Manage().Window.Maximize();
-            Console.WriteLine("Maximize to full screen");
+                //driver.Manage().Window.Maximize();
+                //Console.WriteLine("Maximize to full screen");
 
             //wait untill the page loaded
-            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
-            Console.WriteLine("the page loaded");
+                //driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
+                //Console.WriteLine("the page loaded");
         }
-
 
         //Test is the test case
         [Test]
         public void ExecuiteTest()
         {
             //Title
-            //SeleniumSetMethods.SlectDropDown(driver, "TitleId", "Mr.", "Id");
+            SeleniumSetMethods.SlectDropDown(driver, "TitleId", "Mr.", "Id");
 
             //Intail
-            //SeleniumSetMethods.EnterText(driver, "Initial", "executeautomation", "Name");
+            SeleniumSetMethods.EnterText(driver, "Initial", "executeautomation", "Name");
 
-            //Console.WriteLine("The value from my title is: " + SeleniumGetMethods.GetText(driver,"TitleId","Id"));
+            Console.WriteLine("The value from my title is: " + SeleniumGetMethods.GetText(driver,"TitleId","Id"));
 
-            //Console.WriteLine("The value from my Intail is: " + SeleniumGetMethods.GetText(driver,"Intail","Name"));
+            Console.WriteLine("The value from my Intail is: " + SeleniumGetMethods.GetText(driver,"Intail","Name"));
 
             //Click
-            SeleniumSetMethods.Click(driver, " drop-down-bar", "class");
+            SeleniumSetMethods.Click(driver, "Save", "Name");
             Console.WriteLine("click");
         }
 
+        [Test]
+        public void NextTest()
+        {
+            Console.WriteLine("Next Method");
+        }
 
         //TearDown run after any TEST
         [TearDown]

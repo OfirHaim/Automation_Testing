@@ -12,36 +12,28 @@ namespace IDobet_Automation_Test
     class SeleniumSetMethods
     {
         //Enter Text
-        public static void EnterText(IWebDriver driver,string element, string value, string elementtype)
+        public static void EnterText(IWebDriver driver, string element, string value, string elementtype)
         {
-            if(elementtype == "id")
+            if (elementtype == "id")
                 driver.FindElement(By.Id(element)).SendKeys(value);
             if (elementtype == "name")
                 driver.FindElement(By.Name(element)).SendKeys(value);
             if (elementtype == "class")
                 driver.FindElement(By.ClassName(element)).SendKeys(value);
-
         }
 
         //Click into a button , Checkbox, Optin etc
         public static void Click(IWebDriver driver, string element, string elementtype)
         {
-            switch (elementtype)
-            {
-                case "id":
-                    driver.FindElement(By.Id(element)).Click();
-                    break;
-                case "name":
-                    driver.FindElement(By.Name(element)).Click();
-                    break;
-                case "class":
-                    driver.FindElement(By.ClassName(element)).Click();
-                    break;
-            }
-
+            if (elementtype == "id")
+                driver.FindElement(By.Id(element)).Click();
+            if (elementtype == "id")
+                driver.FindElement(By.Name(element)).Click();
+            if (elementtype == "id")
+                driver.FindElement(By.ClassName(element)).Click();
         }
 
-        //Slecting a drop down control
+        //Slecting a drop down control   
         public static void SlectDropDown(IWebDriver driver, string element, string value, string elementtype)
         {
             if (elementtype == "id")

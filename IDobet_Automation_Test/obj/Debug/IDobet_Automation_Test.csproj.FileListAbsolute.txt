@@ -22,3 +22,4 @@ C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\n
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\WebDriver.xml
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\WebDriver.Support.xml
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.csprojResolveAssemblyReference.cache
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\chromedriver.exe
