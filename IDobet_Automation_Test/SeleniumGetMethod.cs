@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,25 @@ namespace IDobet_Automation_Test
 {
     class SeleniumGetMethods
     {
-        
         ////Getting value out from Textbox
-        public static string GetText(IWebDriver driver, string element, string elementtype)
+        public static string GetText(string element, PropertyType elementtype)
         {
-            if (elementtype == "Id")
-                return driver.FindElement(By.Id(element)).Text;
-            if (elementtype == "Name")
-                return driver.FindElement(By.Name(element)).Text;
-            if (elementtype == "Class")
-                return driver.FindElement(By.ClassName(element)).Text;
+            if (elementtype == PropertyType.Id)
+                return PropertiesCollection.driver.FindElement(By.Id(element)).GetAttribute("Value");
+            if (elementtype == PropertyType.Name)
+                return PropertiesCollection.driver.FindElement(By.Name(element)).GetAttribute("Value");
+            if (elementtype == PropertyType.ClassName)
+                return PropertiesCollection.driver.FindElement(By.ClassName(element)).GetAttribute("Value");
+            else return string.Empty;
+        }
+        public static string GetTextFromDDL(string element, PropertyType elementtype)
+        {
+            if (elementtype == PropertyType.Id)
+                return new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text;
+            if (elementtype == PropertyType.Name)
+                return new SelectElement(PropertiesCollection.driver.FindElement(By.Name(element))).AllSelectedOptions.SingleOrDefault().Text;
+            if (elementtype == PropertyType.ClassName)
+                return new SelectElement(PropertiesCollection.driver.FindElement(By.ClassName(element))).AllSelectedOptions.SingleOrDefault().Text;
             else return string.Empty;
         }
     }

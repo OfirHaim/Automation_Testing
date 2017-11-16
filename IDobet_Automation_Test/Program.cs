@@ -1,19 +1,15 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
 
 namespace IDobet_Automation_Test
 {
     class Program
-    {
-        //crate a referance for our browser
-        IWebDriver driver = new ChromeDriver();
-
+    {     
         static void Main(string[] args)
         {
         }
@@ -22,11 +18,12 @@ namespace IDobet_Automation_Test
         [SetUp]
         public void Initialize()   
         {
+            PropertiesCollection.driver = new ChromeDriver();
             //write to the console
                 Console.WriteLine("OpenUrl");
 
             //neavigate to any url 
-                driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html?UserName=&amp;Password=&amp;Login=Login﻿");
+            PropertiesCollection.driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html?UserName=&amp;Password=&amp;Login=Login﻿");
 
             //Maximize to full screen
                 //driver.Manage().Window.Maximize();
@@ -36,23 +33,22 @@ namespace IDobet_Automation_Test
                 //driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
                 //Console.WriteLine("the page loaded");
         }
-
         //Test is the test case
         [Test]
-        public void ExecuiteTest()
+        public void ExecuteTest()
         {
             //Title
-            SeleniumSetMethods.SlectDropDown(driver, "TitleId", "Mr.", "Id");
+            SeleniumSetMethods.SlectDropDown("TitleId", "Mr.", PropertyType.Id);
 
             //Intail
-            SeleniumSetMethods.EnterText(driver, "Initial", "executeautomation", "Name");
+            SeleniumSetMethods.EnterText("Initial", "executeautomation", PropertyType.Name);
 
-            Console.WriteLine("The value from my title is: " + SeleniumGetMethods.GetText(driver,"TitleId","Id"));
+            Console.WriteLine("The value from my TitleId is: " + SeleniumGetMethods.GetTextFromDDL("TitleId",PropertyType.Id));
 
-            Console.WriteLine("The value from my Intail is: " + SeleniumGetMethods.GetText(driver,"Intail","Name"));
+            Console.WriteLine("The value from my Initial is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name));
 
             //Click
-            SeleniumSetMethods.Click(driver, "Save", "Name");
+            SeleniumSetMethods.Click("Save", PropertyType.Name);
             Console.WriteLine("click");
         }
 
@@ -70,7 +66,7 @@ namespace IDobet_Automation_Test
             Console.WriteLine("CleanUp");
 
             //close the driver
-           // driver.Close();
+                //driver.Close();
         }
     }
 }
