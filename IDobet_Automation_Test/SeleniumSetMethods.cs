@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace IDobet_Automation_Test
 {
-    class SeleniumSetMethods
+    static class SeleniumSetMethods
     {
         //Enter Text
         public static void EnterText(string element, string value, PropertyType elementtype)
