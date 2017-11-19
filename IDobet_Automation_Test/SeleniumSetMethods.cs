@@ -18,9 +18,9 @@ namespace IDobet_Automation_Test
         {
             if (elementtype == PropertyType.Id)
                 PropertiesCollection.driver.FindElement(By.Id(element)).SendKeys(value);
-            if (elementtype == PropertyType.Name)
+            else if(elementtype == PropertyType.Name)
                 PropertiesCollection.driver.FindElement(By.Name(element)).SendKeys(value);
-            if (elementtype == PropertyType.ClassName)
+            else if(elementtype == PropertyType.ClassName)
                 PropertiesCollection.driver.FindElement(By.ClassName(element)).SendKeys(value);
         }
 
@@ -29,9 +29,9 @@ namespace IDobet_Automation_Test
         {
             if (elementtype == PropertyType.Id)
                 PropertiesCollection.driver.FindElement(By.Id(element)).Click();
-            if (elementtype == PropertyType.Name)
+            else if (elementtype == PropertyType.Name)
                 PropertiesCollection.driver.FindElement(By.Name(element)).Click();
-            if (elementtype == PropertyType.ClassName)
+            else if(elementtype == PropertyType.ClassName)
                 PropertiesCollection.driver.FindElement(By.ClassName(element)).Click();
         }
 
@@ -40,9 +40,9 @@ namespace IDobet_Automation_Test
         {
             if (elementtype == PropertyType.Id)
                 new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).SelectByText(value);
-            if (elementtype == PropertyType.Name)
+            else if(elementtype == PropertyType.Name)
                 new SelectElement(PropertiesCollection.driver.FindElement(By.Name(element))).SelectByText(value);
-            if (elementtype == PropertyType.ClassName)
+            else if(elementtype == PropertyType.ClassName)
                 new SelectElement(PropertiesCollection.driver.FindElement(By.Name(element))).SelectByText(value);
         }
     }

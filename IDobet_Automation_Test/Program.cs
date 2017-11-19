@@ -23,7 +23,7 @@ namespace IDobet_Automation_Test
                 Console.WriteLine("OpenUrl");
 
             //neavigate to any url 
-            PropertiesCollection.driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html?UserName=&amp;Password=&amp;Login=Login﻿");
+            PropertiesCollection.driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html?Username=&amp;Password=&amp;Login=Login﻿");
 
             //Maximize to full screen
                 //driver.Manage().Window.Maximize();
@@ -44,6 +44,8 @@ namespace IDobet_Automation_Test
             SeleniumSetMethods.EnterText("Initial", "executeautomation", PropertyType.Name);
 
             Console.WriteLine("The value from my TitleId is: " + SeleniumGetMethods.GetTextFromDDL("TitleId",PropertyType.Id));
+            string name = SeleniumGetMethods.GetText("Initial", PropertyType.Name);
+            Console.WriteLine(name);
 
             Console.WriteLine("The value from my Initial is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name));
 

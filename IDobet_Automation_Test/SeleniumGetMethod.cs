@@ -15,9 +15,9 @@ namespace IDobet_Automation_Test
         {
             if (elementtype == PropertyType.Id)
                 return PropertiesCollection.driver.FindElement(By.Id(element)).GetAttribute("Value");
-            if (elementtype == PropertyType.Name)
+            else if (elementtype == PropertyType.Name)
                 return PropertiesCollection.driver.FindElement(By.Name(element)).GetAttribute("Value");
-            if (elementtype == PropertyType.ClassName)
+            else if(elementtype == PropertyType.ClassName)
                 return PropertiesCollection.driver.FindElement(By.ClassName(element)).GetAttribute("Value");
             else return string.Empty;
         }
@@ -25,9 +25,9 @@ namespace IDobet_Automation_Test
         {
             if (elementtype == PropertyType.Id)
                 return new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text;
-            if (elementtype == PropertyType.Name)
+            else if(elementtype == PropertyType.Name)
                 return new SelectElement(PropertiesCollection.driver.FindElement(By.Name(element))).AllSelectedOptions.SingleOrDefault().Text;
-            if (elementtype == PropertyType.ClassName)
+            else if(elementtype == PropertyType.ClassName)
                 return new SelectElement(PropertiesCollection.driver.FindElement(By.ClassName(element))).AllSelectedOptions.SingleOrDefault().Text;
             else return string.Empty;
         }
