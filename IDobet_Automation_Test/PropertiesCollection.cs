@@ -13,7 +13,8 @@ namespace IDobet_Automation_Test
         Name,
         LinqText,
         CssName,
-        ClassName
+        ClassName,
+        CssSelector
     }
 
     class PropertiesCollection

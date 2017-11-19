@@ -2,8 +2,10 @@
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace IDobet_Automation_Test.TestCases.North
@@ -13,17 +15,15 @@ namespace IDobet_Automation_Test.TestCases.North
         [SetUp]
         public void Initialize()
         {
-            WrapperFactory.BrowserFactory.InitBrowser("Chrome");
-            //write to the console
+            //open the Browser
+            WrapperFactory.BrowserFactory.InitBrowser(ConfigurationManager.AppSettings["BrowserName"]);
             Console.WriteLine("OpenUrl");
 
             //neavigate to any url 
             //executeautomation.com/demosite/index.html?Username=&amp;Password=&amp;Login=Login﻿
-            PropertiesCollection.driver.Navigate().GoToUrl("http://qa.idobet.com/online");
-            
-            //wait untill the page loaded
-            PropertiesCollection.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-
+            PropertiesCollection.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
+            Thread.Sleep(8000);
+           
             //Maximize to full screen
             PropertiesCollection.driver.Manage().Window.Maximize();
             Console.WriteLine("Maximize to full screen");
@@ -35,10 +35,11 @@ namespace IDobet_Automation_Test.TestCases.North
         [Test]
         public void LoginTests()
         {
-            
             PageObjectModel.north.TopBar topbar = new PageObjectModel.north.TopBar();
             topbar.Loginbtn.Click();
-
+            topbar.InputEmail.SendKeys(ConfigurationManager.AppSettings["username"]);
+            topbar.InputPassword.SendKeys(ConfigurationManager.AppSettings["Password"]);
+            topbar.ClickLogin.Click();
         }
 
         //TearDown run after any TEST

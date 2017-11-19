@@ -14,11 +14,48 @@ namespace IDobet_Automation_Test.PageObjectModel.north
         {
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
+        #region  LoginPgObject
+        /******************************************************************************
+                                    LoginPgObject
+        *******************************************************************************/
+        //login click
+        [FindsBy(How = How.CssSelector, Using = "nav.main-menu li:last-child a span")]
+            public IWebElement Loginbtn { get; set; }
 
+            [FindsBy(How = How.CssSelector, Using = ".login-modal form input[type=email]")]
+            public IWebElement InputEmail { get; set; }
 
-        [FindsBy(How = How.XPath,Using = "/html/body/app/div/section/topbar/header/nav/ul/li[6]")][CacheLookup]
+            [FindsBy(How = How.CssSelector, Using = ".login-modal form input[type=password]")]
+            public IWebElement InputPassword { get; set; }
+
+            [FindsBy(How = How.CssSelector, Using = ".login-modal form .button-row button")]
+            public IWebElement ClickLogin { get; set; }
+
+        /******************************************************************************
+                                     LoginPgObject
+        *******************************************************************************/
+        #endregion
+
+        #region RegisterPgObject
+        /******************************************************************************
+                                     RegisterPgObject
+        *******************************************************************************/
+        //login click
+        [FindsBy(How = How.CssSelector, Using = "nav.main-menu li:last-child a span")]
         public IWebElement Loginbtn { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = ".login-modal form input[type=email]")]
+        public IWebElement InputEmail { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = ".login-modal form input[type=password]")]
+        public IWebElement InputPassword { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".login-modal form .button-row button")]
+        public IWebElement ClickLogin { get; set; }
+
+        /******************************************************************************
+                                LoginPgObject
+        *******************************************************************************/
+        #endregion
     }
 }
