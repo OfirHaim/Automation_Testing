@@ -5,57 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
+using System.Configuration;
 
-namespace IDobet_Automation_Test.PageObjectModel.north
+namespace IDobet_Automation_Test.PageObjectModel.North
 {
     class TopBar
     {
+        public LoginPageObject loginPageObject { get; set; }
+        public RegisterPageObject registerPageObject { get; set; }
+
         public TopBar()
         {
+            loginPageObject = new LoginPageObject();
+            registerPageObject = new RegisterPageObject();
             PageFactory.InitElements(PropertiesCollection.driver, this);
+            PageFactory.InitElements(PropertiesCollection.driver, loginPageObject);
+            PageFactory.InitElements(PropertiesCollection.driver, registerPageObject);
         }
-        #region  LoginPgObject
-        /******************************************************************************
-                                    LoginPgObject
-        *******************************************************************************/
-        //login click
-        [FindsBy(How = How.CssSelector, Using = "nav.main-menu li:last-child a span")]
-            public IWebElement Loginbtn { get; set; }
-
-            [FindsBy(How = How.CssSelector, Using = ".login-modal form input[type=email]")]
-            public IWebElement InputEmail { get; set; }
-
-            [FindsBy(How = How.CssSelector, Using = ".login-modal form input[type=password]")]
-            public IWebElement InputPassword { get; set; }
-
-            [FindsBy(How = How.CssSelector, Using = ".login-modal form .button-row button")]
-            public IWebElement ClickLogin { get; set; }
-
-        /******************************************************************************
-                                     LoginPgObject
-        *******************************************************************************/
-        #endregion
-
-        #region RegisterPgObject
-        /******************************************************************************
-                                     RegisterPgObject
-        *******************************************************************************/
-        //login click
-        [FindsBy(How = How.CssSelector, Using = "nav.main-menu li:last-child a span")]
-        public IWebElement Loginbtn { get; set; }
-
-        [FindsBy(How = How.CssSelector, Using = ".login-modal form input[type=email]")]
-        public IWebElement InputEmail { get; set; }
-
-        [FindsBy(How = How.CssSelector, Using = ".login-modal form input[type=password]")]
-        public IWebElement InputPassword { get; set; }
-
-        [FindsBy(How = How.CssSelector, Using = ".login-modal form .button-row button")]
-        public IWebElement ClickLogin { get; set; }
-
-        /******************************************************************************
-                                LoginPgObject
-        *******************************************************************************/
-        #endregion
     }
 }

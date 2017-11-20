@@ -7,42 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using IDobet_Automation_Test.Configiruation;
 
 namespace IDobet_Automation_Test.TestCases.North
 {
     class Login
     {
         [SetUp]
-        public void Initialize()
+        public void Init()
         {
-            //open the Browser
-            WrapperFactory.BrowserFactory.InitBrowser(ConfigurationManager.AppSettings["BrowserName"]);
-            Console.WriteLine("OpenUrl");
-
-            //neavigate to any url 
-            //executeautomation.com/demosite/index.html?Username=&amp;Password=&amp;Login=Login﻿
-            PropertiesCollection.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
-            Thread.Sleep(8000);
-           
-            //Maximize to full screen
-            PropertiesCollection.driver.Manage().Window.Maximize();
-            Console.WriteLine("Maximize to full screen");
-
-            //Console.WriteLine("the page loaded");
+            SetupConfiguration config = new SetupConfiguration();
+            config.Initialize();
         }
 
-        //Test is the test case
         [Test]
         public void LoginTests()
         {
-            PageObjectModel.north.TopBar topbar = new PageObjectModel.north.TopBar();
-            topbar.Loginbtn.Click();
-            topbar.InputEmail.SendKeys(ConfigurationManager.AppSettings["username"]);
-            topbar.InputPassword.SendKeys(ConfigurationManager.AppSettings["Password"]);
-            topbar.ClickLogin.Click();
+            PageObjectModel.North.TopBar Login = new PageObjectModel.North.TopBar();
+            Login.loginPageObject.ClickOnloginTopBar();
+            Login.loginPageObject.EnterUserName();
+            Login.loginPageObject.EnterPassword();
+            Login.loginPageObject.Clicklogin();
         }
 
-        //TearDown run after any TEST
+        [Test]
+        public void RegisterTests()
+        {
+            PageObjectModel.North.TopBar Register = new PageObjectModel.North.TopBar();
+            Register.registerPageObject.ClickOnRegisterButtonTopBar();
+            Register.registerPageObject.RegisterInputEmail();
+            Register.registerPageObject.RegisterInputPassword();
+            Register.registerPageObject.RegisterConfirimPassword();
+            Register.registerPageObject.RegisterPromotionCode();
+            Register.registerPageObject.RegisterClickSignup();
+        }
+
         [TearDown]
         public void CleanUp()
         {

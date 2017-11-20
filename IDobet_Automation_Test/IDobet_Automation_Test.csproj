@@ -59,12 +59,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EAPageObject.cs" />
+    <Compile Include="Configiruation\SetupConfiguration.cs" />
     <Compile Include="PageObjectModel\center\LiveEvent.cs" />
     <Compile Include="PageObjectModel\center\Slider.cs" />
     <Compile Include="PageObjectModel\east\BetSlip.cs" />
     <Compile Include="PageObjectModel\east\Right_Banners.cs" />
     <Compile Include="PageObjectModel\North\LangBar.cs" />
+    <Compile Include="PageObjectModel\North\LoginPageObject.cs" />
+    <Compile Include="PageObjectModel\North\RegisterPageObject.cs" />
     <Compile Include="PageObjectModel\North\TopBar.cs" />
     <Compile Include="PageObjectModel\center\TopEvent.cs" />
     <Compile Include="PageObjectModel\center\UpcomingEvents.cs" />
