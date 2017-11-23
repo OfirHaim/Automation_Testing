@@ -20,6 +20,6 @@ namespace IDobet_Automation_Test
     class PropertiesCollection
     {
         //Auto implemant Property
-            public static IWebDriver driver { get; set; }
+           
     }
 }

@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IDobet_Automation_Test.PageObjectModel.center
+namespace IDobet_Automation_Test.PageObjectModel.Center
 {
     class Slider
     {
         public Slider()
         {
-            PageFactory.InitElements(PropertiesCollection.driver, this);
         }
     }
 }

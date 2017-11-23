@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IDobet_Automation_Test</RootNamespace>
     <AssemblyName>IDobet_Automation_Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,7 +38,6 @@
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -51,25 +51,24 @@
     <Reference Include="System.Xml" />
     <Reference Include="WebDriver, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.7.0\lib\net45\WebDriver.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="WebDriver.Support, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.Support.3.7.0\lib\net45\WebDriver.Support.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configiruation\SetupConfiguration.cs" />
-    <Compile Include="PageObjectModel\center\LiveEvent.cs" />
-    <Compile Include="PageObjectModel\center\Slider.cs" />
+    <Compile Include="Manager\Configiruation\TestConfigManager.cs" />
+    <Compile Include="PageObjectModel\Center\CenterFireScrollBar.cs" />
+    <Compile Include="PageObjectModel\Center\LiveEvents.cs" />
+    <Compile Include="PageObjectModel\Center\Slider.cs" />
     <Compile Include="PageObjectModel\east\BetSlip.cs" />
     <Compile Include="PageObjectModel\east\Right_Banners.cs" />
     <Compile Include="PageObjectModel\North\LangBar.cs" />
-    <Compile Include="PageObjectModel\North\LoginPageObject.cs" />
-    <Compile Include="PageObjectModel\North\RegisterPageObject.cs" />
+    <Compile Include="PageObjectModel\North\LoginPage.cs" />
+    <Compile Include="PageObjectModel\North\RegisterPage.cs" />
     <Compile Include="PageObjectModel\North\TopBar.cs" />
-    <Compile Include="PageObjectModel\center\TopEvent.cs" />
-    <Compile Include="PageObjectModel\center\UpcomingEvents.cs" />
+    <Compile Include="PageObjectModel\Center\TopEvents.cs" />
+    <Compile Include="PageObjectModel\Center\UpcomingEvents.cs" />
     <Compile Include="PageObjectModel\west\Left_Banners.cs" />
     <Compile Include="PageObjectModel\west\SearchGame.cs" />
     <Compile Include="PageObjectModel\west\SportCounter.cs" />
@@ -80,14 +79,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeleniumGetMethod.cs" />
     <Compile Include="SeleniumSetMethods.cs" />
+    <Compile Include="Manager\PageObjectManager.cs" />
+    <Compile Include="TestCases\Center\ChooseLiveOddTest.cs" />
     <Compile Include="TestCases\North\LoginTest.cs" />
-    <Compile Include="WrapperFactory\BrowserFactory.cs" />
+    <Compile Include="TestCases\North\RegisterTest.cs" />
+    <Compile Include="Manager\BrowsersFactory.cs" />
+    <Compile Include="TestCases\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\packages.config">
+    <None Include="packages.config" />
+    <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -102,7 +103,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.2.33\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.2.33\build\Selenium.Chrome.WebDriver.targets'))" />
   </Target>
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.2.33\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.33\build\Selenium.Chrome.WebDriver.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

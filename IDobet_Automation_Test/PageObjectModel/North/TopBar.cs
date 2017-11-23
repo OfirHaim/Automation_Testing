@@ -9,18 +9,18 @@ using System.Configuration;
 
 namespace IDobet_Automation_Test.PageObjectModel.North
 {
-    class TopBar
+    public class TopBar
     {
-        public LoginPageObject loginPageObject { get; set; }
-        public RegisterPageObject registerPageObject { get; set; }
+        public LoginPage loginPage { get; set; }
+        public RegisterPage registerPage { get; set; }
 
-        public TopBar()
+        public TopBar(IWebDriver driver)
         {
-            loginPageObject = new LoginPageObject();
-            registerPageObject = new RegisterPageObject();
-            PageFactory.InitElements(PropertiesCollection.driver, this);
-            PageFactory.InitElements(PropertiesCollection.driver, loginPageObject);
-            PageFactory.InitElements(PropertiesCollection.driver, registerPageObject);
+            loginPage = new LoginPage();
+            registerPage = new RegisterPage();
+            PageFactory.InitElements(driver, this);
+            PageFactory.InitElements(driver, loginPage);
+            PageFactory.InitElements(driver, registerPage);
         }
     }
 }

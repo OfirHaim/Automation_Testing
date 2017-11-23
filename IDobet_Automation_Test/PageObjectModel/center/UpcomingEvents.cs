@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace IDobet_Automation_Test.PageObjectModel
 {
-    class UpcomingEvents
+    public class UpcomingEvents
     {
+
     }
 }
