@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IDobet_Automation_Test.TestCases.Center
 {
-    class ChooseLiveOddTest
+    class LiveOddTest
     {
         [SetUp]
         public void Init()
@@ -26,7 +26,7 @@ namespace IDobet_Automation_Test.TestCases.Center
         [TearDown]
         public void CleanUp()
         {
-            //TestConfigManager.Instance.CleanUp(TestConfigManager.Instance.driver);
+           // TestConfigManager.Instance.CleanUp(TestConfigManager.Instance.driver);
         }
     }
 }

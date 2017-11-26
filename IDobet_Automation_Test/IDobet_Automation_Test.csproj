@@ -80,7 +80,10 @@
     <Compile Include="SeleniumGetMethod.cs" />
     <Compile Include="SeleniumSetMethods.cs" />
     <Compile Include="Manager\PageObjectManager.cs" />
-    <Compile Include="TestCases\Center\ChooseLiveOddTest.cs" />
+    <Compile Include="TestCases\Center\ComboOddTest.cs" />
+    <Compile Include="TestCases\Center\LiveOddTest.cs" />
+    <Compile Include="TestCases\Center\TopEventOddTest.cs" />
+    <Compile Include="TestCases\Center\UpcomingOddTest.cs" />
     <Compile Include="TestCases\North\LoginTest.cs" />
     <Compile Include="TestCases\North\RegisterTest.cs" />
     <Compile Include="Manager\BrowsersFactory.cs" />

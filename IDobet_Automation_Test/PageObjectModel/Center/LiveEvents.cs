@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,8 +19,11 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
         [FindsBy(How = How.ClassName, Using = ".live-container")]
         private IWebElement nowLive { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = ".live-container eventslistwithsportfilter .events-list .event-container odd .odd")]
-        private IList<IWebElement> oddsLives { get; set; }
+        [FindsBy(How = How.CssSelector, Using = ".live-container .list-container .event-list-item.live-events")]
+        private IList<IWebElement> eventsLives { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".live-container .events-list .event-list-item.live-events event odd .odd")]
+        private IWebElement oddsLives { get; set; }
 
         [FindsBy(How = How.ClassName, Using = ".live-container eventslistwithsportfilter .events-list .event-container odd .odd.is-locked")]
         private IWebElement oddIsLocked { get; set; }
@@ -34,7 +38,7 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
         {
             if (nowLive != null)
             {
-                chososeLiveOdd();
+                chososeLiveEvent();
             }
             else
             {
@@ -42,34 +46,23 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
             }
         }
 
-        private void chososeLiveOdd()
+        private void chososeLiveEvent()
         {
-            Random rnd = new Random();
-            foreach (var oddsLive in oddsLives)
+            for (var i = 0; i < Int32.Parse(ConfigurationManager.AppSettings["Live_Odd_Selection"]); i++)
             {
-                if (oddsLive.Text != "")
+                var eventRnd = random.Next(1, eventsLives.Count - 1);
+                var upcomingEvent = eventsLives[eventRnd];
+                var clickableList = upcomingEvent.FindElements(By.ClassName("odd"));
+                var oddRnd = random.Next(1, clickableList.Count - 1);
+                if (clickableList[oddRnd].Text != "")
                 {
-                    if (float.Parse(oddsLive.Text) < RandomNumberBetween(1.05,10))
-                    {
-                        oddsLive.Click();
-                        Console.WriteLine(oddsLive.Text);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("not Odds :" + oddsLive.Text);
+                    Console.WriteLine(clickableList[oddRnd].Text);
+                    clickableList[oddRnd].Click();
                 }
             }
         }
 
-        private readonly Random random = new Random();
-
-        private double RandomNumberBetween(double minValue, double maxValue)
-        {
-            var next = random.NextDouble();
-
-            return minValue + (next * (maxValue - minValue));
-        }
+        private readonly Random random = new Random((int)DateTime.Now.Ticks);
 
         public void chooseLiveOdd()
         {
@@ -78,3 +71,4 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
         #endregion
     }
 }
+
