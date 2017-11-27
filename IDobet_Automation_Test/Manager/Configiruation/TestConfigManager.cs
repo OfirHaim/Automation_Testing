@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -38,18 +40,25 @@ namespace IDobet_Automation_Test.Configiruation
             //open the Browser
             driver = Manager.BrowsersFactory.Instance.InitBrowser(browserName);
             Console.WriteLine("OpenBrowser");
-
+            
             //neavigate to any url 
             driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
             Console.WriteLine("navigate to URL: " + ConfigurationManager.AppSettings["URL"]);
 
-            //wait until the page loaded
-            Thread.Sleep(8000);
-            Console.WriteLine("Wait until the page loaded");
 
-            //Maximize to full screen
-            driver.Manage().Window.Maximize();
-            Console.WriteLine("Maximize to full screen");
+            var ready = WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(driver, By.TagName("App"));
+
+            if (ready == true)
+            {
+                //Maximize to full screen
+                driver.Manage().Window.Maximize();
+                Console.WriteLine("Maximize to full screen");
+            }
+            //wait until the page loaded
+            //Thread.Sleep(8000); 
+            //Console.WriteLine("Wait until the page loaded");
+
+
         }
 
         public void CleanUp(IWebDriver driver)

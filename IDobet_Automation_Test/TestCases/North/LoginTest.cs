@@ -31,7 +31,6 @@ namespace IDobet_Automation_Test.TestCases.North
         public void CleanUp()
         {
             TestConfigManager.Instance.CleanUp(TestConfigManager.Instance.driver);
-            
         }
     }
 }

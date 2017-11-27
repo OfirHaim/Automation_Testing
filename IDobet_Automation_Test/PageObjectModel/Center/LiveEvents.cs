@@ -48,7 +48,8 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
 
         private void chososeLiveEvent()
         {
-            for (var i = 0; i < Int32.Parse(ConfigurationManager.AppSettings["Live_Odd_Selection"]); i++)
+            int LiveOddSlection = Int32.Parse(ConfigurationManager.AppSettings["Live_Odd_Selection"]);
+            for (var i = 0; i < LiveOddSlection; i++)
             {
                 var eventRnd = random.Next(1, eventsLives.Count - 1);
                 var upcomingEvent = eventsLives[eventRnd];
@@ -71,4 +72,53 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
         #endregion
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//int CurentLiveOddSlection = 0;
+//int OddsCounter = 0;
+//while (OddsCounter < (eventsLives.Count * 11) && CurentLiveOddSlection < LiveOddSlection)
+//{
+//    var eventRnd = random.Next(1, eventsLives.Count - 1);
+//    var upcomingEvent = eventsLives[eventRnd];
+//    var clickableList = upcomingEvent.FindElements(By.ClassName("odd"));
+//    var oddRnd = random.Next(1, clickableList.Count - 1);
+//    if (clickableList[oddRnd].Text != "")
+//    {
+//        Console.WriteLine(clickableList[oddRnd].Text);
+//        clickableList[oddRnd].Click();
+//        CurentLiveOddSlection ++;
+//    }
+//    OddsCounter++;
+//}
 

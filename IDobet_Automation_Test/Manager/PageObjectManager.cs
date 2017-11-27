@@ -15,9 +15,10 @@ namespace IDobet_Automation_Test.TestCases
 
         public PageObjectModel.Center.CenterFireScrollBar centerFireScrollBar { get; set; }
 
+        public PageObjectModel.East.EastFireScrollBar eastFireScrollBar { get; set; }
+
         private PageObjectManager()
         {
-
         }
 
         public static PageObjectManager Instance
@@ -29,6 +30,7 @@ namespace IDobet_Automation_Test.TestCases
                     _instance = new PageObjectManager();
                     _instance.topBar = new PageObjectModel.North.TopBar(TestConfigManager.Instance.driver);
                     _instance.centerFireScrollBar = new PageObjectModel.Center.CenterFireScrollBar(TestConfigManager.Instance.driver);
+                    _instance.eastFireScrollBar = new PageObjectModel.East.EastFireScrollBar(TestConfigManager.Instance.driver);
                 }
                 return _instance;
             }

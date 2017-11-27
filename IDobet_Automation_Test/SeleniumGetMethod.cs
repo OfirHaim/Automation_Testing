@@ -8,16 +8,5 @@ using System.Threading.Tasks;
 
 namespace IDobet_Automation_Test
 {
-    class SeleniumGetMethods
-    {
-        ////Getting value out from Textbox
-        public static string GetText(IWebElement element)
-        {
-            return element.GetAttribute("value");
-        }
-        public static string GetTextFromDDL(IWebElement element)
-        {
-            return new SelectElement(element).AllSelectedOptions.SingleOrDefault().Text;
-        }
-    }
+
 }  
