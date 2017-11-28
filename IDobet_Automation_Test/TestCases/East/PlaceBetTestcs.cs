@@ -21,6 +21,7 @@ namespace IDobet_Automation_Test.TestCases.East
         public void ComboPlaceBet()
         {
             PageObjectManager.Instance.topBar.loginPage.Login(ConfigurationManager.AppSettings["username"], ConfigurationManager.AppSettings["password"]);
+            //PageObjectManager.Instance.centerFireScrollBar.liveEvents.chooseLiveOdd();
             PageObjectManager.Instance.centerFireScrollBar.topEvents.chooseTopeventOdd();
             PageObjectManager.Instance.centerFireScrollBar.upcomingEvents.chooseupcomingEventOdd();
             PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
@@ -29,7 +30,7 @@ namespace IDobet_Automation_Test.TestCases.East
         [TearDown]
         public void CleanUp()
         {
-            //TestConfigManager.Instance.CleanUp(TestConfigManager.Instance.driver);
+            TestConfigManager.Instance.CleanUp(TestConfigManager.Instance.driver);
 
         }
     }

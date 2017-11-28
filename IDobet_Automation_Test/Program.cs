@@ -13,7 +13,6 @@ namespace IDobet_Automation_Test
     {
         static void Main(string[] args)
         {
-
         }
     }
 }

@@ -29,13 +29,18 @@ namespace IDobet_Automation_Test.PageObjectModel.North
 
         //click on login button from login popup
         [FindsBy(How = How.CssSelector, Using = ".login-modal form .button-row button")]
-        private IWebElement LoginPopupBtn{ get; set; }
+        private IWebElement LoginPopupBtn { get; set; }
         #endregion
 
         #region LoginPageMethod
         /******************************************************************************
                                      LoginPageMethod
         *******************************************************************************/
+        private void assertBefore()
+        {
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(
+                Configiruation.TestConfigManager.Instance.driver, By.XPath("/html/body/app/div/section/topbar/header/nav/ul/li[6]/a"));
+        }
         private void ClickOnloginTopBar()
         {
             Loginbtn.Click();
@@ -56,12 +61,20 @@ namespace IDobet_Automation_Test.PageObjectModel.North
             LoginPopupBtn.Click();
             Console.WriteLine("click on login button from login popup");
         }
+        private void assertAfter()
+        {
+            WebDriverExtension.SeleniumSetMethods.WaitUntilLoaderIsHide();
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, By.ClassName("user-sub-menu"));
+            Console.WriteLine("Assert The User Is Now Login");
+        }
         public void Login(string userName, string password)
         {
+            this.assertBefore();
             this.ClickOnloginTopBar();
             this.EnterUserName(userName);
             this.EnterPassword(password);
             this.Clicklogin();
+            this.assertAfter();
         }
         #endregion
     }

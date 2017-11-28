@@ -77,8 +77,6 @@
     <Compile Include="PageObjectModel\west\TtimeFilter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeleniumGetMethod.cs" />
-    <Compile Include="SeleniumSetMethods.cs" />
     <Compile Include="Manager\PageObjectManager.cs" />
     <Compile Include="TestCases\Center\ComboOddTest.cs" />
     <Compile Include="TestCases\Center\LiveOddTest.cs" />

@@ -32,6 +32,12 @@ namespace IDobet_Automation_Test.PageObjectModel
         /******************************************************************************
                                   TopEventsMethod
         *******************************************************************************/
+        private void assertBefore()
+        {
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(
+                Configiruation.TestConfigManager.Instance.driver, By.ClassName("top-container"));
+        }
+
         private void TopEventExists()
         {
             if (topEvent != null)
@@ -46,16 +52,23 @@ namespace IDobet_Automation_Test.PageObjectModel
 
         private void chososeTopEvent()
         {
+            int TopEventsOddSlection = Int32.Parse(ConfigurationManager.AppSettings["TopEvent_Odd_Selection"]);
+            var numbers = new List<int>(Enumerable.Range(0, topEvents.Count - 1));
+                numbers.Shuffle();
+                numbers = numbers.Take(TopEventsOddSlection).ToList();
             for (var i = 0; i < Int32.Parse(ConfigurationManager.AppSettings["TopEvent_Odd_Selection"]); i++)
             {
-                var eventRnd = random.Next(1, topEvents.Count - 1);
+                var eventRnd = numbers[i];
                 var topEvent = topEvents[eventRnd];
                 var clickableList = topEvent.FindElements(By.ClassName("odd"));
-                var oddRnd = random.Next(1, clickableList.Count - 1);
-                if (clickableList[oddRnd].Text != "")
+                if(clickableList.Count > 0 )
                 {
-                    Console.WriteLine(clickableList[oddRnd].Text);
-                    clickableList[oddRnd].Click();
+                    var oddRnd = random.Next(0, clickableList.Count - 1);
+                    if (clickableList[oddRnd].Text != "")
+                    {
+                        Console.WriteLine(clickableList[oddRnd].Text);
+                        clickableList[oddRnd].Click();
+                    }
                 }
             }
         }

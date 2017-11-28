@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,12 @@ namespace IDobet_Automation_Test.PageObjectModel
         /******************************************************************************
                                   UpcomingEventsMethod
         *******************************************************************************/
+        private void assertBefore()
+        {
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(
+                Configiruation.TestConfigManager.Instance.driver, By.ClassName("upcoming-container"));
+        }
+
         private void UpcomingEventsExists()
         {
             if (upcomingEvent != null)
@@ -46,21 +53,33 @@ namespace IDobet_Automation_Test.PageObjectModel
 
         private void chososeUpcomingEvent()
         {
+            int upcomingEventsOddSlection = Int32.Parse(ConfigurationManager.AppSettings["Upcoming _Odd_Selection"]);
+            var numbers = new List<int>(Enumerable.Range(0, upcomingEvents.Count - 1));
+            numbers.Shuffle();
+            numbers = numbers.Take(upcomingEventsOddSlection).ToList();
+
             for (var i = 0; i < Int32.Parse(ConfigurationManager.AppSettings["Upcoming _Odd_Selection"]); i++)
             {
-                var eventRnd = random.Next(upcomingEvents.Count - 1);
+                var eventRnd = numbers[i];
                 var upcomingEvent = upcomingEvents[eventRnd];
                 var clickableList = upcomingEvent.FindElements(By.ClassName("odd"));
-                var oddRnd = random.Next(clickableList.Count - 1);
-                if (clickableList[oddRnd].Text != "")
+                if (clickableList.Count > 0)
                 {
-                    Console.WriteLine(clickableList[oddRnd].Text);
-                    clickableList[oddRnd].Click();
+                    var oddRnd = random.Next(0, clickableList.Count - 1);
+                    if (clickableList[oddRnd].Text != "")
+                    {
+                        clickableList[oddRnd].Click();
+                    }
                 }
             }
         }
 
         private readonly Random random = new Random((int)DateTime.Now.Ticks);
+
+        private void assertAfter()
+        {
+
+        }
 
         public void chooseupcomingEventOdd()
         {

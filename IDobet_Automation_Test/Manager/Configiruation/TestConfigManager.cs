@@ -45,20 +45,14 @@ namespace IDobet_Automation_Test.Configiruation
             driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
             Console.WriteLine("navigate to URL: " + ConfigurationManager.AppSettings["URL"]);
 
-
-            var ready = WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(driver, By.TagName("App"));
-
+            Console.WriteLine("Wait until the page loaded");
+            var ready = WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(driver, By.ClassName("top-container"));
             if (ready == true)
             {
                 //Maximize to full screen
                 driver.Manage().Window.Maximize();
                 Console.WriteLine("Maximize to full screen");
             }
-            //wait until the page loaded
-            //Thread.Sleep(8000); 
-            //Console.WriteLine("Wait until the page loaded");
-
-
         }
 
         public void CleanUp(IWebDriver driver)
@@ -66,7 +60,6 @@ namespace IDobet_Automation_Test.Configiruation
             //close the driver
             driver.Close();
             driver.Quit();
-
             //write to the console
             Console.WriteLine("CleanUp");
         }

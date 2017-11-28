@@ -28,7 +28,7 @@ namespace IDobet_Automation_Test.TestCases.Center
         [TearDown]
         public void CleanUp()
         {
-            // TestConfigManager.Instance.CleanUp(TestConfigManager.Instance.driver);
+            TestConfigManager.Instance.CleanUp(TestConfigManager.Instance.driver);
         }
     }
 }

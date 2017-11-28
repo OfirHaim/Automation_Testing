@@ -34,6 +34,12 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
         /******************************************************************************
                                   LiveEventsMethod
         *******************************************************************************/
+        private void assertBefore()
+        {
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(
+                Configiruation.TestConfigManager.Instance.driver, By.ClassName("live-container"));
+        }
+
         private void LiveExists()
         {
             if (nowLive != null)
@@ -49,24 +55,33 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
         private void chososeLiveEvent()
         {
             int LiveOddSlection = Int32.Parse(ConfigurationManager.AppSettings["Live_Odd_Selection"]);
+            var numbers = new List<int>(Enumerable.Range(0, eventsLives.Count - 1));
+            numbers.Shuffle();
+            numbers = numbers.Take(LiveOddSlection).ToList();
             for (var i = 0; i < LiveOddSlection; i++)
             {
-                var eventRnd = random.Next(1, eventsLives.Count - 1);
+                Console.WriteLine(eventsLives.Count - 1 + "eventsLivesList");
+                var eventRnd = numbers[i];
                 var upcomingEvent = eventsLives[eventRnd];
                 var clickableList = upcomingEvent.FindElements(By.ClassName("odd"));
-                var oddRnd = random.Next(1, clickableList.Count - 1);
-                if (clickableList[oddRnd].Text != "")
+                if (clickableList.Count > 0)
                 {
-                    Console.WriteLine(clickableList[oddRnd].Text);
-                    clickableList[oddRnd].Click();
+                    var oddRnd = random.Next(0, clickableList.Count - 1);
+                    if (clickableList[oddRnd].Text != "")
+                    {
+                        clickableList[oddRnd].Click();
+                    }
                 }
             }
         }
 
+        
+        
         private readonly Random random = new Random((int)DateTime.Now.Ticks);
 
         public void chooseLiveOdd()
         {
+            this.assertBefore();
             this.LiveExists();
         }
         #endregion
