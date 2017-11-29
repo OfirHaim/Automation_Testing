@@ -1,8 +1,8 @@
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.exe.config
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.exe
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.pdb
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\nunit.framework.dll
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\WebDriver.dll
-C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.exe.config
-C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\IDobet_Automation_Test.pdb
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\WebDriver.Support.dll
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\nunit.framework.xml
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\WebDriver.xml

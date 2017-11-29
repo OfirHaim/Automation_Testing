@@ -57,7 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manager\Configiruation\TestConfigManager.cs" />
+    <Compile Include="Manager\TestConfigManager.cs" />
     <Compile Include="PageObjectModel\Center\CenterFireScrollBar.cs" />
     <Compile Include="PageObjectModel\Center\LiveEvents.cs" />
     <Compile Include="PageObjectModel\Center\Slider.cs" />
@@ -78,10 +78,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Manager\PageObjectManager.cs" />
-    <Compile Include="TestCases\Center\ComboOddTest.cs" />
-    <Compile Include="TestCases\Center\LiveOddTest.cs" />
-    <Compile Include="TestCases\Center\TopEventOddTest.cs" />
-    <Compile Include="TestCases\Center\UpcomingOddTest.cs" />
     <Compile Include="TestCases\East\PlaceBetTestcs.cs" />
     <Compile Include="TestCases\North\LoginTest.cs" />
     <Compile Include="TestCases\North\RegisterTest.cs" />
@@ -97,7 +93,10 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Manager\Configiruation\" />
+    <Folder Include="TestCases\Center\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

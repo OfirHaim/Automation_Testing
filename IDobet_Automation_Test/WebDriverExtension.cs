@@ -13,6 +13,7 @@ namespace IDobet_Automation_Test
 {
     public static class WebDriverExtension
     {
+        //random but not repaet on the random
         public static void Shuffle<T>(this IList<T> list)
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
@@ -54,25 +55,47 @@ namespace IDobet_Automation_Test
             public static bool WaitUntilElementIsPresent(IWebDriver driver, By by, int timeout = 20)
             {
                 var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
-                return wait.Until(d => d.FindElement(by)).Displayed;
+                var elementDisplayd = wait.Until(d => d.FindElement(by)).Displayed;
+                Console.WriteLine("Assert The element :" + by + "Is Displayed");
+                return elementDisplayd;
             }
 
-            public static bool WaitUntilLoaderIsHide(int timeout = 10)
+            //Wait until the Loader Disappear
+            public static bool WaitUntilLoaderIsHide(int timeout = 20)
             {
-                var loader = new WebDriverWait(TestConfigManager.Instance.driver, TimeSpan.FromSeconds(timeout));
-                var LoaderDisappear = loader.Until(d => d.FindElement(By.ClassName("loader"))).Displayed;
-                if(LoaderDisappear == true)
+                var wait = new WebDriverWait(TestConfigManager.Instance.driver, TimeSpan.FromSeconds(timeout));
+                var LoaderIsPresent = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector("onlineloader .loader")));
+                if (!LoaderIsPresent)
                 {
-                    Console.WriteLine("The Loader Is Active wait 3 S'");
                     Task.Delay(3000).Wait();
+                    WaitUntilLoaderIsHide();
                 }
-                else
+                Console.WriteLine("Assert The Loader Disappear");
+                return true;
+            }
+            //Wait until the WattingForApproval Disappear
+            public static bool WattingForApproval(int timeout = 10)
+            {
+                var wait = new WebDriverWait(TestConfigManager.Instance.driver, TimeSpan.FromSeconds(timeout));
+                var LoaderIsPresent = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(".place-bets-btn.waiting")));
+                if (!LoaderIsPresent)
                 {
-                    Console.WriteLine("The Loader Is Not Exssist");
+                    WattingForApproval();
                 }
-                return LoaderDisappear;
+                return true;
             }
 
+            ////Wait until the AcceptChanges Disappear
+            //public static bool AcceptChangesDisappear(int timeout = 10)
+            //{
+            //    var wait = new WebDriverWait(TestConfigManager.Instance.driver, TimeSpan.FromSeconds(timeout));
+            //     LoaderIsPresent = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector(".place-bets-btn.accept-changes")));
+            //    if (!LoaderIsPresent)
+            //    {
+            //        AcceptChangesDisappear();
+            //    }
+            //    return true;
+            //}
         }
 
         public static class SeleniumGetMethods

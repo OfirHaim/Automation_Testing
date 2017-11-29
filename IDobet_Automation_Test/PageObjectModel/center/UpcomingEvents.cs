@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using IDobet_Automation_Test.Configiruation;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -33,11 +34,6 @@ namespace IDobet_Automation_Test.PageObjectModel
         /******************************************************************************
                                   UpcomingEventsMethod
         *******************************************************************************/
-        private void assertBefore()
-        {
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(
-                Configiruation.TestConfigManager.Instance.driver, By.ClassName("upcoming-container"));
-        }
 
         private void UpcomingEventsExists()
         {
@@ -76,13 +72,9 @@ namespace IDobet_Automation_Test.PageObjectModel
 
         private readonly Random random = new Random((int)DateTime.Now.Ticks);
 
-        private void assertAfter()
-        {
-
-        }
-
         public void chooseupcomingEventOdd()
         {
+            TestConfigManager.Instance.assertBefore(By.ClassName("upcoming-container"));
             this.UpcomingEventsExists();
         }
         #endregion

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using IDobet_Automation_Test.Configiruation;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -32,11 +33,6 @@ namespace IDobet_Automation_Test.PageObjectModel
         /******************************************************************************
                                   TopEventsMethod
         *******************************************************************************/
-        private void assertBefore()
-        {
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(
-                Configiruation.TestConfigManager.Instance.driver, By.ClassName("top-container"));
-        }
 
         private void TopEventExists()
         {
@@ -77,6 +73,7 @@ namespace IDobet_Automation_Test.PageObjectModel
 
         public void chooseTopeventOdd()
         {
+            TestConfigManager.Instance.assertBefore(By.ClassName("top-container"));
             this.TopEventExists();
         }
         #endregion

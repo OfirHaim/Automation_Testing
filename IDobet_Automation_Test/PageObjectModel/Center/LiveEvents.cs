@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using IDobet_Automation_Test.Configiruation;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -34,11 +35,6 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
         /******************************************************************************
                                   LiveEventsMethod
         *******************************************************************************/
-        private void assertBefore()
-        {
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(
-                Configiruation.TestConfigManager.Instance.driver, By.ClassName("live-container"));
-        }
 
         private void LiveExists()
         {
@@ -75,13 +71,11 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
             }
         }
 
-        
-        
         private readonly Random random = new Random((int)DateTime.Now.Ticks);
 
         public void chooseLiveOdd()
         {
-            this.assertBefore();
+            TestConfigManager.Instance.assertBefore(By.ClassName("live-container"));
             this.LiveExists();
         }
         #endregion

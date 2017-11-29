@@ -15,15 +15,36 @@ namespace IDobet_Automation_Test.TestCases.East
         public void Init()
         {
             TestConfigManager.Instance.Initialize(ConfigurationManager.AppSettings["BrowserName"]);
+            PageObjectManager.Instance.topBar.loginPage.Login(ConfigurationManager.AppSettings["username"], ConfigurationManager.AppSettings["password"]);
         }
 
         [Test]
-        public void ComboPlaceBet()
+        public void ComboPlaceBetTest()
         {
-            PageObjectManager.Instance.topBar.loginPage.Login(ConfigurationManager.AppSettings["username"], ConfigurationManager.AppSettings["password"]);
-            //PageObjectManager.Instance.centerFireScrollBar.liveEvents.chooseLiveOdd();
+            PageObjectManager.Instance.centerFireScrollBar.liveEvents.chooseLiveOdd();
             PageObjectManager.Instance.centerFireScrollBar.topEvents.chooseTopeventOdd();
             PageObjectManager.Instance.centerFireScrollBar.upcomingEvents.chooseupcomingEventOdd();
+            PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
+        }
+
+        [Test]
+        public void UpCommingPlaceBetTest()
+        {
+            PageObjectManager.Instance.centerFireScrollBar.upcomingEvents.chooseupcomingEventOdd();
+            PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
+        }
+
+        [Test]
+        public void TopEventPlaceBetTest()
+        {
+            PageObjectManager.Instance.centerFireScrollBar.topEvents.chooseTopeventOdd();
+            PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
+        }
+
+        [Test]
+        public void LivePlaceBetTest()
+        {
+            PageObjectManager.Instance.centerFireScrollBar.topEvents.chooseTopeventOdd();
             PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
         }
 
@@ -31,7 +52,6 @@ namespace IDobet_Automation_Test.TestCases.East
         public void CleanUp()
         {
             TestConfigManager.Instance.CleanUp(TestConfigManager.Instance.driver);
-
         }
     }
 }

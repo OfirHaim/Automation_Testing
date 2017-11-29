@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using System.Configuration;
+using IDobet_Automation_Test.Configiruation;
 
 namespace IDobet_Automation_Test.PageObjectModel.North
 {
@@ -36,11 +37,7 @@ namespace IDobet_Automation_Test.PageObjectModel.North
         /******************************************************************************
                                      LoginPageMethod
         *******************************************************************************/
-        private void assertBefore()
-        {
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(
-                Configiruation.TestConfigManager.Instance.driver, By.XPath("/html/body/app/div/section/topbar/header/nav/ul/li[6]/a"));
-        }
+
         private void ClickOnloginTopBar()
         {
             Loginbtn.Click();
@@ -61,20 +58,14 @@ namespace IDobet_Automation_Test.PageObjectModel.North
             LoginPopupBtn.Click();
             Console.WriteLine("click on login button from login popup");
         }
-        private void assertAfter()
-        {
-            WebDriverExtension.SeleniumSetMethods.WaitUntilLoaderIsHide();
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, By.ClassName("user-sub-menu"));
-            Console.WriteLine("Assert The User Is Now Login");
-        }
         public void Login(string userName, string password)
         {
-            this.assertBefore();
+            TestConfigManager.Instance.assertBefore(By.XPath("/html/body/app/div/section/topbar/header/nav/ul/li[6]/a"));
             this.ClickOnloginTopBar();
             this.EnterUserName(userName);
             this.EnterPassword(password);
             this.Clicklogin();
-            this.assertAfter();
+            TestConfigManager.Instance.assertAfter(By.ClassName("user-sub-menu"));
         }
         #endregion
     }
