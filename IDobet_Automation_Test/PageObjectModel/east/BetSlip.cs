@@ -61,11 +61,17 @@ namespace IDobet_Automation_Test.PageObjectModel.east
         private void EnterComboStake(string Amount)
         {
             enterComboStake.SendKeys(Amount);
+
         }
 
         private void EnterSingleStake(string Amount)
         {
             enterSingleStake.SendKeys(Amount);
+        }
+
+        private void AcceptAllChangesBtn()
+        {
+            acceptChangesBtn.Click();
         }
 
         private void PlaceBetBtn()
@@ -81,7 +87,7 @@ namespace IDobet_Automation_Test.PageObjectModel.east
 
         private void ConfirmBtn()
         {
-            if(this.stopWtach == null)
+            if (this.stopWtach == null)
             {
                 this.stopWtach = new Stopwatch();
             }
@@ -91,14 +97,13 @@ namespace IDobet_Automation_Test.PageObjectModel.east
             }
             confirmBtn.Click();
             this.stopWtach.Start();
-            var waitingForApprovalEND = WebDriverExtension.SeleniumSetMethods.WattingForApproval(); // true 
-            if(waitingForApprovalEND)
+            var waitingForApprovalEND = WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector(".place-bets-btn.waiting"), 20); // true 
+            if (waitingForApprovalEND)
             {
                 this.stopWtach.Stop();
-                var a =  TestConfigManager.Instance.driver.FindElement(By.CssSelector(".place-bets-btn.accept-changes"));
-                Console.WriteLine(a.Text);
+                if (WebDriverExtension.SeleniumSetMethods.IsFound(By.CssSelector(".place-bets-btn.accept-changes")))
                 {
-                    acceptChangesBtn.Click();
+                    this.AcceptAllChangesBtn();
                     this.PlaceBetBtn();
                     this.ConfirmBtn();
                 }
@@ -108,10 +113,14 @@ namespace IDobet_Automation_Test.PageObjectModel.east
         public void placeBet(string Amount)
         {
             this.EnterComboStake(Amount);
+            if (WebDriverExtension.SeleniumSetMethods.IsFound(By.CssSelector(".place-bets-btn.accept-changes")))
+            {
+                this.AcceptAllChangesBtn();
+            }
             this.PlaceBetBtn();
             this.ConfirmBtn();
             TestConfigManager.Instance.assertAfter(By.CssSelector(".successful-message.active"));
-            Console.WriteLine("There is live in betting slip: " +this.isLiveInBettingSlip + "the time are take to made bet :" + this.stopWtach.Elapsed);
+            Console.WriteLine("There is live in betting slip: " + this.isLiveInBettingSlip + "the time are take to made bet :" + this.stopWtach.Elapsed);
         }
 
         #endregion

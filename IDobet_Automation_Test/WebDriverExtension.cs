@@ -61,54 +61,44 @@ namespace IDobet_Automation_Test
             }
 
             //Wait until the Loader Disappear
-            public static bool WaitUntilLoaderIsHide(int timeout = 20)
+            public static bool WaitUntilElementIsHide(By by, int timeout)
             {
                 var wait = new WebDriverWait(TestConfigManager.Instance.driver, TimeSpan.FromSeconds(timeout));
-                var LoaderIsPresent = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector("onlineloader .loader")));
-                if (!LoaderIsPresent)
+                var elementIsPresent = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
+                if (!elementIsPresent)
                 {
-                    Task.Delay(3000).Wait();
-                    WaitUntilLoaderIsHide();
+                    WaitUntilElementIsHide(by, timeout);
                 }
-                Console.WriteLine("Assert The Loader Disappear");
-                return true;
-            }
-            //Wait until the WattingForApproval Disappear
-            public static bool WattingForApproval(int timeout = 10)
-            {
-                var wait = new WebDriverWait(TestConfigManager.Instance.driver, TimeSpan.FromSeconds(timeout));
-                var LoaderIsPresent = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(".place-bets-btn.waiting")));
-                if (!LoaderIsPresent)
-                {
-                    WattingForApproval();
-                }
+                Console.WriteLine("Assert The Elenent: " + by + " Disappear");
                 return true;
             }
 
-            ////Wait until the AcceptChanges Disappear
-            //public static bool AcceptChangesDisappear(int timeout = 10)
-            //{
-            //    var wait = new WebDriverWait(TestConfigManager.Instance.driver, TimeSpan.FromSeconds(timeout));
-            //     LoaderIsPresent = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector(".place-bets-btn.accept-changes")));
-            //    if (!LoaderIsPresent)
-            //    {
-            //        AcceptChangesDisappear();
-            //    }
-            //    return true;
-            //}
-        }
-
-        public static class SeleniumGetMethods
-        {
-            ////Getting value out from Textbox
-            public static string GetText(IWebElement element)
+            public static bool IsFound(By by)
             {
-                return element.GetAttribute("value");
+                bool isFound = true;
+                try
+                {
+                    TestConfigManager.Instance.driver.FindElement(by);
+                }
+                catch (NoSuchElementException)
+                {
+                    isFound = false;
+                }
+                return isFound;
             }
-            ////Getting value out from DropDown
-            public static string GetTextFromDDL(IWebElement element)
+
+            public static class SeleniumGetMethods
             {
-                return new SelectElement(element).AllSelectedOptions.SingleOrDefault().Text;
+                ////Getting value out from Textbox
+                public static string GetText(IWebElement element)
+                {
+                    return element.GetAttribute("value");
+                }
+                ////Getting value out from DropDown
+                public static string GetTextFromDDL(IWebElement element)
+                {
+                    return new SelectElement(element).AllSelectedOptions.SingleOrDefault().Text;
+                }
             }
         }
     }

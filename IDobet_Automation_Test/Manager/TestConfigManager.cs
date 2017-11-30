@@ -66,14 +66,14 @@ namespace IDobet_Automation_Test.Configiruation
 
         public void assertBefore(By by)
         {
-            WebDriverExtension.SeleniumSetMethods.WaitUntilLoaderIsHide();
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"),20);
             WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, by);
         }
 
         public void assertAfter(By by)
         {
             WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, by);
-            WebDriverExtension.SeleniumSetMethods.WaitUntilLoaderIsHide();
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 20);
         }
     }
 }

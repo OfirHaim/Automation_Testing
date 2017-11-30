@@ -75,6 +75,7 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
 
         public void chooseLiveOdd()
         {
+            
             TestConfigManager.Instance.assertBefore(By.ClassName("live-container"));
             this.LiveExists();
         }
