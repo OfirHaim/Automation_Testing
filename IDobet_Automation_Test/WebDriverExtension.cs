@@ -94,6 +94,7 @@ namespace IDobet_Automation_Test
                 {
                     return element.GetAttribute("value");
                 }
+
                 ////Getting value out from DropDown
                 public static string GetTextFromDDL(IWebElement element)
                 {

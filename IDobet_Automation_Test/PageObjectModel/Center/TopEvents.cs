@@ -50,19 +50,19 @@ namespace IDobet_Automation_Test.PageObjectModel
         {
             int TopEventsOddSlection = Int32.Parse(ConfigurationManager.AppSettings["TopEvent_Odd_Selection"]);
             var numbers = new List<int>(Enumerable.Range(0, topEvents.Count - 1));
-                numbers.Shuffle();
-                numbers = numbers.Take(TopEventsOddSlection).ToList();
+            numbers.Shuffle();
+            numbers = numbers.Take(TopEventsOddSlection).ToList();
+            Console.WriteLine(topEvents.Count - 1 + " topEventsList");
             for (var i = 0; i < Int32.Parse(ConfigurationManager.AppSettings["TopEvent_Odd_Selection"]); i++)
             {
                 var eventRnd = numbers[i];
                 var topEvent = topEvents[eventRnd];
                 var clickableList = topEvent.FindElements(By.ClassName("odd"));
-                if(clickableList.Count > 0 )
+                if (clickableList.Count > 0)
                 {
                     var oddRnd = random.Next(0, clickableList.Count - 1);
                     if (clickableList[oddRnd].Text != "")
                     {
-                        Console.WriteLine(clickableList[oddRnd].Text);
                         clickableList[oddRnd].Click();
                     }
                 }

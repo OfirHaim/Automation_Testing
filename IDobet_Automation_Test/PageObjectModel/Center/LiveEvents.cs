@@ -54,9 +54,9 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
             var numbers = new List<int>(Enumerable.Range(0, eventsLives.Count - 1));
             numbers.Shuffle();
             numbers = numbers.Take(LiveOddSlection).ToList();
+            Console.WriteLine(eventsLives.Count - 1 + " eventsLivesList");
             for (var i = 0; i < LiveOddSlection; i++)
             {
-                Console.WriteLine(eventsLives.Count - 1 + "eventsLivesList");
                 var eventRnd = numbers[i];
                 var upcomingEvent = eventsLives[eventRnd];
                 var clickableList = upcomingEvent.FindElements(By.ClassName("odd"));
@@ -75,60 +75,11 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
 
         public void chooseLiveOdd()
         {
-            
+
             TestConfigManager.Instance.assertBefore(By.ClassName("live-container"));
             this.LiveExists();
         }
         #endregion
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//int CurentLiveOddSlection = 0;
-//int OddsCounter = 0;
-//while (OddsCounter < (eventsLives.Count * 11) && CurentLiveOddSlection < LiveOddSlection)
-//{
-//    var eventRnd = random.Next(1, eventsLives.Count - 1);
-//    var upcomingEvent = eventsLives[eventRnd];
-//    var clickableList = upcomingEvent.FindElements(By.ClassName("odd"));
-//    var oddRnd = random.Next(1, clickableList.Count - 1);
-//    if (clickableList[oddRnd].Text != "")
-//    {
-//        Console.WriteLine(clickableList[oddRnd].Text);
-//        clickableList[oddRnd].Click();
-//        CurentLiveOddSlection ++;
-//    }
-//    OddsCounter++;
-//}
 

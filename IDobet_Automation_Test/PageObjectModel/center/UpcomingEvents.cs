@@ -53,7 +53,7 @@ namespace IDobet_Automation_Test.PageObjectModel
             var numbers = new List<int>(Enumerable.Range(0, upcomingEvents.Count - 1));
             numbers.Shuffle();
             numbers = numbers.Take(upcomingEventsOddSlection).ToList();
-
+            Console.WriteLine(upcomingEvents.Count - 1 + " upcomingEventsList");
             for (var i = 0; i < Int32.Parse(ConfigurationManager.AppSettings["Upcoming _Odd_Selection"]); i++)
             {
                 var eventRnd = numbers[i];

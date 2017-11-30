@@ -120,7 +120,7 @@ namespace IDobet_Automation_Test.PageObjectModel.east
             this.PlaceBetBtn();
             this.ConfirmBtn();
             TestConfigManager.Instance.assertAfter(By.CssSelector(".successful-message.active"));
-            Console.WriteLine("There is live in betting slip: " + this.isLiveInBettingSlip + "the time are take to made bet :" + this.stopWtach.Elapsed);
+            Console.WriteLine("There is live in betting slip: " + this.isLiveInBettingSlip + " the time are take to made bet: " + this.stopWtach.Elapsed);
         }
 
         #endregion
