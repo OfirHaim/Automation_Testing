@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium;
 using System.Configuration;
 using IDobet_Automation_Test.Configiruation;
+using IDobet_Automation_Test.Manager;
 
 namespace IDobet_Automation_Test.PageObjectModel.North
 {
@@ -41,7 +43,8 @@ namespace IDobet_Automation_Test.PageObjectModel.North
         private void ClickOnloginTopBar()
         {
             Loginbtn.Click();
-            Console.WriteLine("click on login button from the topbar");
+            LogManager.Instance.Info("click on login button from the topbar");
+            //Console.WriteLine("click on login button from the topbar");
         }
         private void EnterUserName(string userName)
         {
@@ -65,7 +68,7 @@ namespace IDobet_Automation_Test.PageObjectModel.North
             this.EnterUserName(userName);
             this.EnterPassword(password);
             this.Clicklogin();
-            TestConfigManager.Instance.assertAfter(By.ClassName("user-sub-menu"));
+            TestConfigManager.Instance.assertAfter(By.ClassName("user-menu"));
         }
         #endregion
     }

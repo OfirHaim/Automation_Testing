@@ -11,3 +11,6 @@ C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\I
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.exe
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.pdb
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.csprojResolveAssemblyReference.cache
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\log4net.config
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\log4net.dll
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\log4net.xml

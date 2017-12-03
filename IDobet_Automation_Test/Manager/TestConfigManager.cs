@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using static IDobet_Automation_Test.Manager.BrowsersFactory;
+using System.Drawing.Imaging;
+using NUnit.Framework.Interfaces;
 
 namespace IDobet_Automation_Test.Configiruation
 {
@@ -57,11 +60,21 @@ namespace IDobet_Automation_Test.Configiruation
 
         public void CleanUp(IWebDriver driver)
         {
-            //close the driver
-            driver.Close();
-            driver.Quit();
-            //write to the console
-            Console.WriteLine("CleanUp");
+            var testResult = TestContext.CurrentContext.Result.Outcome.Status;
+            if (testResult.ToString() == "Passed")
+            {
+                Console.WriteLine("The test is: " + testResult.ToString());
+                Console.WriteLine("CleanUp");
+                driver.Close();
+                driver.Quit();
+            }
+            if (testResult.ToString() == "Failed" || testResult.ToString() == "Inconclusive")
+            {
+                TestConfigManager.Instance.takeascreenshot();
+                Console.WriteLine("The test is: " + testResult.ToString());
+                driver.Close();
+                driver.Quit();
+            }
         }
 
         public void assertBefore(By by)
@@ -74,6 +87,16 @@ namespace IDobet_Automation_Test.Configiruation
         {
             WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, by);
             WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 20);
+        }
+
+        public void takeascreenshot()
+        {
+            Screenshot ss = ((ITakesScreenshot)TestConfigManager.Instance.driver).GetScreenshot();
+            ss.SaveAsFile(@"C:\Users\ofir\Desktop\ScreenShot\.png", ScreenshotImageFormat.Png);
+
+            //var screenshot = TestConfigManager.Instance.driver.TakeScreenshot();
+            //string timestamp = DateTime.Now.ToString("yyyy-mm-dd-hhmm-ss");
+            //screenshot.SaveAsFile(@"C:\Users\ofir\Desktop");
         }
     }
 }

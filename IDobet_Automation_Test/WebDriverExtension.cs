@@ -60,7 +60,7 @@ namespace IDobet_Automation_Test
                 return elementDisplayd;
             }
 
-            //Wait until the Loader Disappear
+            //Wait until the Element Disappear
             public static bool WaitUntilElementIsHide(By by, int timeout)
             {
                 var wait = new WebDriverWait(TestConfigManager.Instance.driver, TimeSpan.FromSeconds(timeout));
@@ -73,6 +73,7 @@ namespace IDobet_Automation_Test
                 return true;
             }
 
+            //is Found the Element 
             public static bool IsFound(By by)
             {
                 bool isFound = true;
