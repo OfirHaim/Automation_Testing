@@ -1,4 +1,5 @@
 ﻿using IDobet_Automation_Test.Configiruation;
+using IDobet_Automation_Test.Manager;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -42,7 +43,7 @@ namespace IDobet_Automation_Test.PageObjectModel
             }
             else
             {
-                Console.WriteLine("No Have TopEvent");
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "No Have TopEvent");
             }
         }
 
@@ -52,7 +53,7 @@ namespace IDobet_Automation_Test.PageObjectModel
             var numbers = new List<int>(Enumerable.Range(0, topEvents.Count - 1));
             numbers.Shuffle();
             numbers = numbers.Take(TopEventsOddSlection).ToList();
-            Console.WriteLine(topEvents.Count - 1 + " topEventsList");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, topEvents.Count - 1 + " topEventsList");
             for (var i = 0; i < Int32.Parse(ConfigurationManager.AppSettings["TopEvent_Odd_Selection"]); i++)
             {
                 var eventRnd = numbers[i];

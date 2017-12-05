@@ -1,4 +1,5 @@
 ﻿using IDobet_Automation_Test.Configiruation;
+using IDobet_Automation_Test.Manager;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -44,7 +45,7 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
             }
             else
             {
-                Console.WriteLine("No Have Live Match");
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "No Have Live Match");
             }
         }
 
@@ -54,7 +55,7 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
             var numbers = new List<int>(Enumerable.Range(0, eventsLives.Count - 1));
             numbers.Shuffle();
             numbers = numbers.Take(LiveOddSlection).ToList();
-            Console.WriteLine(eventsLives.Count - 1 + "eventsLivesList");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, eventsLives.Count - 1 + " events Lives List");
             for (var i = 0; i < LiveOddSlection; i++)
             {
                 var eventRnd = numbers[i];
@@ -75,7 +76,6 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
 
         public void chooseLiveOdd()
         {
-
             TestConfigManager.Instance.assertBefore(By.ClassName("live-container"));
             this.LiveExists();
         }

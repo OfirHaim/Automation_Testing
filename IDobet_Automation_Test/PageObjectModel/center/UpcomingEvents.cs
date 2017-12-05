@@ -1,4 +1,5 @@
 ﻿using IDobet_Automation_Test.Configiruation;
+using IDobet_Automation_Test.Manager;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -43,7 +44,7 @@ namespace IDobet_Automation_Test.PageObjectModel
             }
             else
             {
-                Console.WriteLine("No Have chososeUpcoming Event");
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "No Have Upcoming Event");
             }
         }
 
@@ -53,7 +54,7 @@ namespace IDobet_Automation_Test.PageObjectModel
             var numbers = new List<int>(Enumerable.Range(0, upcomingEvents.Count - 1));
             numbers.Shuffle();
             numbers = numbers.Take(upcomingEventsOddSlection).ToList();
-            Console.WriteLine(upcomingEvents.Count - 1 + " upcomingEventsList");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, upcomingEvents.Count - 1 + " upcoming Events List");
             for (var i = 0; i < Int32.Parse(ConfigurationManager.AppSettings["Upcoming _Odd_Selection"]); i++)
             {
                 var eventRnd = numbers[i];

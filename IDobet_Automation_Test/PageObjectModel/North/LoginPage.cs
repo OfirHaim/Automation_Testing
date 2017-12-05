@@ -44,7 +44,6 @@ namespace IDobet_Automation_Test.PageObjectModel.North
         {
             Loginbtn.Click();
             LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug,"click on login button from the topbar");
-            //Console.WriteLine("click on login button from the topbar");
         }
         private void EnterUserName(string userName)
         {

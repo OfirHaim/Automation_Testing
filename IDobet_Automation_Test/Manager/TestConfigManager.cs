@@ -43,24 +43,22 @@ namespace IDobet_Automation_Test.Configiruation
 
         public void Initialize(string browserName)
         {
-            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Statrt the TEST and the test Name is: " + TestContext.CurrentContext.Test.Name.ToString());
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "!----------------------------The: "+TestContext.CurrentContext.Test.Name.ToString()+" Start----------------------------!" );
 
             //open the Browser
             driver = Manager.BrowsersFactory.Instance.InitBrowser(browserName);
-            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug,"Open: " + browserName.ToString()+ " browser");
-            
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Open: " + browserName.ToString() + " browser");
+
             //neavigate to any url 
             driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
             LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "navigate to URL: " + ConfigurationManager.AppSettings["URL"]);
 
             LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Wait until the page loaded");
             var ready = WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(driver, By.ClassName("top-container"));
-            if (ready == true)
+            if (ready)
             {
                 //Maximize to full screen
                 driver.Manage().Window.Maximize();
-
-                //Console.WriteLine("Maximize to full screen");
                 LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Maximize to full screen");
             }
         }
@@ -68,29 +66,41 @@ namespace IDobet_Automation_Test.Configiruation
         public void CleanUp(IWebDriver driver)
         {
             var testResult = TestContext.CurrentContext.Result.Outcome.Status.ToString();
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
 
-            if (testResult.ToString() == "Passed")
-            {
-                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
-                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
-                driver.Close();
-                driver.Quit();
-            }
             if (testResult == "Failed" || testResult == "Inconclusive")
             {
                 var testMessage = TestContext.CurrentContext.Result.Message.ToString();
-                TestConfigManager.Instance.TakeScreenShot(TestContext.CurrentContext.Test.Name);
-                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
                 LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The reason is: " + testMessage);
-                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
-                driver.Close();
-                driver.Quit();
+                TestConfigManager.Instance.TakeScreenShot(TestContext.CurrentContext.Test.Name);
             }
+            //LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "!----------------------------The: "+TestContext.CurrentContext.Test.Name.ToString()+" Finsh----------------------------! \r\n\r\n");
+            driver.Close();
+            driver.Quit();
+
+            //if (testResult.ToString() == "Passed")
+            //{
+            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
+            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
+            //    driver.Close();
+            //    driver.Quit();
+            //}
+            //if (testResult == "Failed" || testResult == "Inconclusive")
+            //{
+            //    var testMessage = TestContext.CurrentContext.Result.Message.ToString();
+            //    TestConfigManager.Instance.TakeScreenShot(TestContext.CurrentContext.Test.Name);
+            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
+            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The reason is: " + testMessage);
+            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
+            //    driver.Close();
+            //    driver.Quit();
+            //}
         }
 
         public void assertBefore(By by)
         {
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"),20);
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 20);
             WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, by);
         }
 
@@ -103,8 +113,8 @@ namespace IDobet_Automation_Test.Configiruation
         public void TakeScreenShot(string testName)
         {
             Screenshot ss = ((ITakesScreenshot)TestConfigManager.Instance.driver).GetScreenshot();
-            var timeNow =  DateTime.Now.ToString("dd.MM.yyyy_HH.mm.ss");
-            ss.SaveAsFile(Path.Combine(LogManager.Instance.ImageFolder, $"{testName + "_" +timeNow}.png"), ScreenshotImageFormat.Png);
+            var timeNow = DateTime.Now.ToString("dd.MM.yyyy_HH.mm.ss");
+            ss.SaveAsFile(Path.Combine(LogManager.Instance.ImageFolder, $"{testName + "_" + timeNow}.png"), ScreenshotImageFormat.Png);
         }
     }
 }
