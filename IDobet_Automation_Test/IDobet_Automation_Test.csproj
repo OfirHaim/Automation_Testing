@@ -89,9 +89,6 @@
     <Compile Include="WebDriverExtension.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="App.config">
       <SubType>Designer</SubType>

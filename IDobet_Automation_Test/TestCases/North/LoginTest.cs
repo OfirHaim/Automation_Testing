@@ -20,7 +20,7 @@ namespace IDobet_Automation_Test.TestCases.North
         {
             TestConfigManager.Instance.Initialize(ConfigurationManager.AppSettings["BrowserName"]);
         }
-
+            
         [Test]
         public void loginTest()
         {

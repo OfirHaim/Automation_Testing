@@ -54,7 +54,7 @@ namespace IDobet_Automation_Test.PageObjectModel.Center
             var numbers = new List<int>(Enumerable.Range(0, eventsLives.Count - 1));
             numbers.Shuffle();
             numbers = numbers.Take(LiveOddSlection).ToList();
-            Console.WriteLine(eventsLives.Count - 1 + " eventsLivesList");
+            Console.WriteLine(eventsLives.Count - 1 + "eventsLivesList");
             for (var i = 0; i < LiveOddSlection; i++)
             {
                 var eventRnd = numbers[i];

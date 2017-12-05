@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using static IDobet_Automation_Test.Manager.BrowsersFactory;
 using System.Drawing.Imaging;
 using NUnit.Framework.Interfaces;
+using OpenQA.Selenium.Firefox;
+using IDobet_Automation_Test.Manager;
+using System.IO;
 
 namespace IDobet_Automation_Test.Configiruation
 {
@@ -41,6 +44,7 @@ namespace IDobet_Automation_Test.Configiruation
         public void Initialize(string browserName)
         {
             //open the Browser
+          
             driver = Manager.BrowsersFactory.Instance.InitBrowser(browserName);
             Console.WriteLine("OpenBrowser");
             
@@ -70,9 +74,10 @@ namespace IDobet_Automation_Test.Configiruation
             }
             if (testResult.ToString() == "Failed" || testResult.ToString() == "Inconclusive")
             {
-                TestConfigManager.Instance.takeascreenshot();
+                TestConfigManager.Instance.TakeScreenShot(TestContext.CurrentContext.Test.FullName);
                 Console.WriteLine("The test is: " + testResult.ToString());
                 driver.Close();
+               
                 driver.Quit();
             }
         }
@@ -86,17 +91,14 @@ namespace IDobet_Automation_Test.Configiruation
         public void assertAfter(By by)
         {
             WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, by);
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 20);
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 5);
         }
 
-        public void takeascreenshot()
+        public void TakeScreenShot(string testName)
         {
             Screenshot ss = ((ITakesScreenshot)TestConfigManager.Instance.driver).GetScreenshot();
-            ss.SaveAsFile(@"C:\Users\ofir\Desktop\ScreenShot\.png", ScreenshotImageFormat.Png);
-
-            //var screenshot = TestConfigManager.Instance.driver.TakeScreenshot();
-            //string timestamp = DateTime.Now.ToString("yyyy-mm-dd-hhmm-ss");
-            //screenshot.SaveAsFile(@"C:\Users\ofir\Desktop");
+            var timeNow =  DateTime.Now.ToString("dd.MM.yyyy_HH.mm.ss");
+            ss.SaveAsFile(Path.Combine(LogManager.Instance.ImageFolder, $"{testName + "_" +timeNow}.png"), ScreenshotImageFormat.Png);
         }
     }
 }
