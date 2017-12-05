@@ -43,41 +43,47 @@ namespace IDobet_Automation_Test.Configiruation
 
         public void Initialize(string browserName)
         {
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Statrt the TEST and the test Name is: " + TestContext.CurrentContext.Test.Name.ToString());
+
             //open the Browser
-          
             driver = Manager.BrowsersFactory.Instance.InitBrowser(browserName);
-            Console.WriteLine("OpenBrowser");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug,"Open: " + browserName.ToString()+ " browser");
             
             //neavigate to any url 
             driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
-            Console.WriteLine("navigate to URL: " + ConfigurationManager.AppSettings["URL"]);
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "navigate to URL: " + ConfigurationManager.AppSettings["URL"]);
 
-            Console.WriteLine("Wait until the page loaded");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Wait until the page loaded");
             var ready = WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(driver, By.ClassName("top-container"));
             if (ready == true)
             {
                 //Maximize to full screen
                 driver.Manage().Window.Maximize();
-                Console.WriteLine("Maximize to full screen");
+
+                //Console.WriteLine("Maximize to full screen");
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Maximize to full screen");
             }
         }
 
         public void CleanUp(IWebDriver driver)
         {
-            var testResult = TestContext.CurrentContext.Result.Outcome.Status;
+            var testResult = TestContext.CurrentContext.Result.Outcome.Status.ToString();
+
             if (testResult.ToString() == "Passed")
             {
-                Console.WriteLine("The test is: " + testResult.ToString());
-                Console.WriteLine("CleanUp");
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
                 driver.Close();
                 driver.Quit();
             }
-            if (testResult.ToString() == "Failed" || testResult.ToString() == "Inconclusive")
+            if (testResult == "Failed" || testResult == "Inconclusive")
             {
-                TestConfigManager.Instance.TakeScreenShot(TestContext.CurrentContext.Test.FullName);
-                Console.WriteLine("The test is: " + testResult.ToString());
+                var testMessage = TestContext.CurrentContext.Result.Message.ToString();
+                TestConfigManager.Instance.TakeScreenShot(TestContext.CurrentContext.Test.Name);
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The reason is: " + testMessage);
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
                 driver.Close();
-               
                 driver.Quit();
             }
         }
@@ -91,7 +97,7 @@ namespace IDobet_Automation_Test.Configiruation
         public void assertAfter(By by)
         {
             WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, by);
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 5);
+            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 20);
         }
 
         public void TakeScreenShot(string testName)

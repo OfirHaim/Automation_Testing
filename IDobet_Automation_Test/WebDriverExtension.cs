@@ -1,4 +1,5 @@
 ﻿using IDobet_Automation_Test.Configiruation;
+using IDobet_Automation_Test.Manager;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -56,7 +57,10 @@ namespace IDobet_Automation_Test
             {
                 var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
                 var elementDisplayd = wait.Until(d => d.FindElement(by)).Displayed;
-                Console.WriteLine("Assert The element :" + by + "Is Displayed");
+                if (elementDisplayd)
+                {
+                    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Assert The element :" + by + " Is Displayed");
+                }
                 return elementDisplayd;
             }
 
@@ -69,7 +73,7 @@ namespace IDobet_Automation_Test
                 {
                     WaitUntilElementIsHide(by, timeout);
                 }
-                Console.WriteLine("Assert The Elenent: " + by + " Disappear");
+                LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Assert The element :" + by + " Disappear");
                 return true;
             }
 

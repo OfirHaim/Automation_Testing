@@ -43,27 +43,23 @@ namespace IDobet_Automation_Test.PageObjectModel.North
         private void ClickOnloginTopBar()
         {
             Loginbtn.Click();
-            LogManager.Instance.WriteToLog(LogManager.elogLevel.Error, "click on login button from the topbar");
             LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug,"click on login button from the topbar");
             //Console.WriteLine("click on login button from the topbar");
         }
         private void EnterUserName(string userName)
         {
             LoginInputEmail.SendKeys(userName);
-            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "enter email address to input field");
-            //Console.WriteLine("enter email address to input field");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "enter the  email: "+ userName + " to input field");
         }
         private void EnterPassword(string password)
         {
             LoginInputPassword.SendKeys(password);
-            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "enter Password  to input field");
-            //Console.WriteLine("enter Password  to input field");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "enter Password: " +password+" to input field");
         }
         private void Clicklogin()
         {
             LoginPopupBtn.Click();
             LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "click on login button from login popup");
-            //Console.WriteLine("click on login button from login popup");
         }
         public void Login(string userName, string password)
         {
