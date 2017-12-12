@@ -1,4 +1,5 @@
 ﻿using IDobet_Automation_Test.Configiruation;
+using IDobet_Automation_Test.Manager;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,15 @@ namespace IDobet_Automation_Test.TestCases.North
         [SetUp]
         public void Init()
         {
-            //TestConfigManager.Instance.Initialize(2, BrowsersType.Chrome);
+            TestConfigManager.Instance.Initialize(ConfigurationManager.AppSettings["BrowserName"]);
+            BrowsersFactory.Instance.OpenNewTab();
+            PageObjectManager.Instance.topBar.tempMail.TempMail1();
         }
 
         [Test]
         public static void RegisterTests()
         {
-            PageObjectManager.Instance.topBar.registerPage.Register(
-                    ConfigurationManager.AppSettings["Username"],
+            PageObjectManager.Instance.topBar.registerPage.Register(PageObjectManager.Instance.topBar.tempMail.Email,
                     ConfigurationManager.AppSettings["Password"],
                     ConfigurationManager.AppSettings["Promtion"]);
         }

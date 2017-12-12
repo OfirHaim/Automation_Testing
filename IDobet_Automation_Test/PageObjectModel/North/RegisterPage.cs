@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using IDobet_Automation_Test.Configiruation;
+using IDobet_Automation_Test.Manager;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -44,41 +46,56 @@ namespace IDobet_Automation_Test.PageObjectModel.North
         private void ClickOnRegisterButtonTopBar()
         {
             RegisterButton.Click();
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "click on  Register button from the topbar");
         }
-        private void RegisterInputEmail(string username)
+
+        private void RegisterInputEmail(string userName)
         {
-            InputEmail.SendKeys(username);
+            InputEmail.SendKeys(userName);
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "enter the  email: " + userName + " to input field");
         }
+
         private void RegisterInputPassword(string password)
         {
             InputPassword.SendKeys(password);
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "enter Password: " + password + " to input field");
         }
+
         private void RegisterConfirimPassword(string password)
-        {
+        {   
             ConfirimPassword.SendKeys(password);
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "enter Confirim Password: " + password + " to input field");
         }
+
         private void RegisterPromotionCode(string promtionCode)
         {
             PromotionCode.SendKeys(promtionCode);
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "enter promtionCode: " + promtionCode + " to input field");
         }
+
         private void RegisterIAccept()
         {
             IAccept.Click();
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Click On Iaccept");
         }
+
         private void RegisterClickSignup()
         {
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Click On Signup");
             ClickSignup.Click();
         }
-        public void Register(string username , string password, string promtionCode)
-        {
-            this.RegisterButton.Click();
-            this.InputEmail.SendKeys(username);
-            this.InputPassword.SendKeys(password);
-            this.ConfirimPassword.SendKeys(password);
-            this.PromotionCode.SendKeys(promtionCode);
-            this.IAccept.Click();
-            this.ClickSignup.Click();
 
+        public void Register(string userName, string password, string promtionCode)
+        {
+            TestConfigManager.Instance.assertBefore(By.XPath("/html/body/app/div/section/topbar/header/nav/ul/li[5]"));
+            this.ClickOnRegisterButtonTopBar();
+            this.RegisterInputEmail(userName);
+            this.RegisterInputPassword(password);
+            this.RegisterConfirimPassword(password);
+            this.RegisterPromotionCode(promtionCode);
+            this.RegisterIAccept();
+            this.RegisterClickSignup();
+            TestConfigManager.Instance.assertAfter(By.ClassName("user-menu"));
         }
         #endregion
     }

@@ -13,6 +13,7 @@ using static IDobet_Automation_Test.Manager.BrowsersFactory;
 
 namespace IDobet_Automation_Test.TestCases.North
 {
+    [TestFixture]
     public class Login
     {
         [SetUp]
@@ -20,7 +21,7 @@ namespace IDobet_Automation_Test.TestCases.North
         {
             TestConfigManager.Instance.Initialize(ConfigurationManager.AppSettings["BrowserName"]);
         }
-            
+
         [Test]
         public void loginTest()
         {

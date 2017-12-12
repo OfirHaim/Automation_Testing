@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Support.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -116,6 +117,10 @@ namespace IDobet_Automation_Test.Manager
     {
         private static BrowsersFactory _instance { get; set; }
 
+        public string originalTabInstance { get; set; }
+
+        public string newTabInstance { get; set; }
+
         private BrowsersFactory()
         {
 
@@ -160,6 +165,34 @@ namespace IDobet_Automation_Test.Manager
             }
 
             return TestConfigManager.Instance.driver;
+        }
+
+        public void OpenNewTab()
+        {
+            // save a reference to our original tab's window handle
+            BrowsersFactory.Instance.originalTabInstance = TestConfigManager.Instance.driver.CurrentWindowHandle;
+            
+            // execute some JavaScript to open a new window
+            TestConfigManager.Instance.driver.ExecuteJavaScript("window.open();");
+            
+            // save a reference to our new tab's window handle, this would be the last entry in the WindowHandles collection
+            BrowsersFactory.Instance.newTabInstance = TestConfigManager.Instance.driver.WindowHandles[TestConfigManager.Instance.driver.WindowHandles.Count - 1];
+            
+            // switch our WebDriver to the new tab's window handle
+            TestConfigManager.Instance.driver.SwitchTo().Window(newTabInstance);
+
+            // lets navigate to a web site in our new tab
+            //TestConfigManager.Instance.driver.Navigate().GoToUrl("www.crowbarsolutions.com");
+
+            // now lets close our new tab
+            //TestConfigManager.Instance.driver.ExecuteJavaScript("window.close();");
+
+            //// and switch our WebDriver back to the original tab's window handle
+//            TestConfigManager.Instance.driver.SwitchTo().Window(originalTabInstance);
+
+            //// and have our WebDriver focus on the main document in the page to send commands to 
+            //TestConfigManager.Instance.driver.SwitchTo().DefaultContent();
+            //System.Threading.Thread.Sleep(5000);
         }
     }
 }
