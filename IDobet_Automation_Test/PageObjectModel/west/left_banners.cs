@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IDobet_Automation_Test.PageObjectModel.west
+namespace IDobet_Automation_Test.PageObjectModel.West
 {
-    class Left_Banners
+    public class Left_Banners
     {
 
     }

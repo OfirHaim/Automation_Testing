@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace IDobet_Automation_Test.PageObjectModel.Center
 {
-    class Slider
+    public class Slider
     {
-        public Slider()
-        {
-        }
     }
 }

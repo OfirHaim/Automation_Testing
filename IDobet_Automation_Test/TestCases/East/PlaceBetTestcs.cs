@@ -15,37 +15,37 @@ namespace IDobet_Automation_Test.TestCases.East
         public void Init()
         {
             TestConfigManager.Instance.Initialize(ConfigurationManager.AppSettings["BrowserName"]);
-            PageObjectManager.Instance.topBar.loginPage.Login(ConfigurationManager.AppSettings["username"], ConfigurationManager.AppSettings["password"]);
+            PageObjectManager.Instance.north_InitClasses.loginPage.Login(ConfigurationManager.AppSettings["username"], ConfigurationManager.AppSettings["password"]);
         }
 
         [Test]
         public void ComboPlaceBetTest()
         {
-            PageObjectManager.Instance.centerFireScrollBar.liveEvents.chooseLiveOdd();
-            PageObjectManager.Instance.centerFireScrollBar.topEvents.chooseTopeventOdd();
-            PageObjectManager.Instance.centerFireScrollBar.upcomingEvents.chooseupcomingEventOdd();
-            PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
+            PageObjectManager.Instance.center_InitClasses.liveEvents.chooseLiveOdd();
+            PageObjectManager.Instance.center_InitClasses.topEvents.chooseTopeventOdd();
+            PageObjectManager.Instance.center_InitClasses.upcomingEvents.chooseupcomingEventOdd();
+            PageObjectManager.Instance.east_Initclasses.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
         }
 
         [Test]
         public void UpCommingPlaceBetTest()
         {
-            PageObjectManager.Instance.centerFireScrollBar.upcomingEvents.chooseupcomingEventOdd();
-            PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
+            PageObjectManager.Instance.center_InitClasses.upcomingEvents.chooseupcomingEventOdd();
+            PageObjectManager.Instance.east_Initclasses.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
         }
 
         [Test]
         public void TopEventPlaceBetTest()
         {
-            PageObjectManager.Instance.centerFireScrollBar.topEvents.chooseTopeventOdd();
-            PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
+            PageObjectManager.Instance.center_InitClasses.topEvents.chooseTopeventOdd();
+            PageObjectManager.Instance.east_Initclasses.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
         }
 
         [Test]
         public void LivePlaceBetTest()
         {
-            PageObjectManager.Instance.centerFireScrollBar.topEvents.chooseTopeventOdd();
-            PageObjectManager.Instance.eastFireScrollBar.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
+            PageObjectManager.Instance.center_InitClasses.topEvents.chooseTopeventOdd();
+            PageObjectManager.Instance.east_Initclasses.betSlip.placeBet(ConfigurationManager.AppSettings["ComboAmount"]);
         }
 
         [TearDown]

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Diagnostics;
-namespace IDobet_Automation_Test.PageObjectModel.east
+namespace IDobet_Automation_Test.PageObjectModel.East
 {
     public class BetSlip
     {

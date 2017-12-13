@@ -9,13 +9,18 @@ namespace IDobet_Automation_Test.TestCases
 {
     public class PageObjectManager
     {
-        private static PageObjectManager _instance { get; set; }
+        private static PageObjectManager _instance                                      { get; set; }
 
-        public PageObjectModel.North.TopBar topBar { get; set; }
+        public PageObjectModel.North.North_InitClasses north_InitClasses                { get; set; }
 
-        public PageObjectModel.Center.CenterFireScrollBar centerFireScrollBar { get; set; }
+        public PageObjectModel.Center.Center_InitClasses center_InitClasses             { get; set; }
 
-        public PageObjectModel.East.EastFireScrollBar eastFireScrollBar { get; set; }
+        public PageObjectModel.East.East_Initclasses east_Initclasses                   { get; set; }
+
+        public PageObjectModel.West.West_InitClasses west_InitClasses                   { get; set; }
+
+        public PageObjectModel.ExternalPages.External_InitClasses external_InitClasses  { get; set; }
+
 
         private PageObjectManager()
         {
@@ -28,9 +33,11 @@ namespace IDobet_Automation_Test.TestCases
                 if (_instance == null)
                 {
                     _instance = new PageObjectManager();
-                    _instance.topBar = new PageObjectModel.North.TopBar(TestConfigManager.Instance.driver);
-                    _instance.centerFireScrollBar = new PageObjectModel.Center.CenterFireScrollBar(TestConfigManager.Instance.driver);
-                    _instance.eastFireScrollBar = new PageObjectModel.East.EastFireScrollBar(TestConfigManager.Instance.driver);
+                    _instance.north_InitClasses     = new PageObjectModel.North.North_InitClasses(TestConfigManager.Instance.driver);
+                    _instance.center_InitClasses    = new PageObjectModel.Center.Center_InitClasses(TestConfigManager.Instance.driver);
+                    _instance.east_Initclasses      = new PageObjectModel.East.East_Initclasses(TestConfigManager.Instance.driver);
+                    _instance.west_InitClasses      = new PageObjectModel.West.West_InitClasses(TestConfigManager.Instance.driver);
+                    _instance.external_InitClasses  = new PageObjectModel.ExternalPages.External_InitClasses(TestConfigManager.Instance.driver);
                 }
                 return _instance;
             }

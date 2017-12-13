@@ -9,6 +9,7 @@ C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\l
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\nunit.framework.xml
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\WebDriver.xml
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\WebDriver.Support.xml
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.csprojResolveAssemblyReference.cache
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.csproj.CoreCompileInputs.cache
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.exe
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.pdb

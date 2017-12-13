@@ -25,7 +25,7 @@ namespace IDobet_Automation_Test.TestCases.North
         [Test]
         public void loginTest()
         {
-            PageObjectManager.Instance.topBar.loginPage.Login(ConfigurationManager.AppSettings["username"],ConfigurationManager.AppSettings["password"]);
+            PageObjectManager.Instance.north_InitClasses.loginPage.Login(ConfigurationManager.AppSettings["username"], ConfigurationManager.AppSettings["password"]);
         }
 
         [TearDown]

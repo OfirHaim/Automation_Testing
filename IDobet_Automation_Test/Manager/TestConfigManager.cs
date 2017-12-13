@@ -43,7 +43,7 @@ namespace IDobet_Automation_Test.Configiruation
 
         public void Initialize(string browserName)
         {
-            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "!----------------------------The: "+TestContext.CurrentContext.Test.Name.ToString()+" Start----------------------------!" );
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "!------------The: " + TestContext.CurrentContext.Test.Name.ToString()+ " Start------------!");
 
             //open the Browser
             driver = Manager.BrowsersFactory.Instance.InitBrowser(browserName);
@@ -74,33 +74,14 @@ namespace IDobet_Automation_Test.Configiruation
                 LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The reason is: " + testMessage);
                 TestConfigManager.Instance.TakeScreenShot(TestContext.CurrentContext.Test.Name);
             }
-            //LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
-            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "!----------------------------The: "+TestContext.CurrentContext.Test.Name.ToString()+" Finsh----------------------------! \r\n\r\n");
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "!------------The: "+TestContext.CurrentContext.Test.Name.ToString()+ " Finsh------------! \r\n\r\n");
             driver.Close();
             driver.Quit();
-
-            //if (testResult.ToString() == "Passed")
-            //{
-            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
-            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
-            //    driver.Close();
-            //    driver.Quit();
-            //}
-            //if (testResult == "Failed" || testResult == "Inconclusive")
-            //{
-            //    var testMessage = TestContext.CurrentContext.Result.Message.ToString();
-            //    TestConfigManager.Instance.TakeScreenShot(TestContext.CurrentContext.Test.Name);
-            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The result test is: " + testResult);
-            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "The reason is: " + testMessage);
-            //    LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "CleanUp");
-            //    driver.Close();
-            //    driver.Quit();
-            //}
         }
 
         public void assertBefore(By by)
         {
-            WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 20);
+            //WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsHide(By.CssSelector("onlineloader .loader"), 20);
             WebDriverExtension.SeleniumSetMethods.WaitUntilElementIsPresent(Configiruation.TestConfigManager.Instance.driver, by);
         }
 

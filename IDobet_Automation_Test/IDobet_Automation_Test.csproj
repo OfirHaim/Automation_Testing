@@ -62,24 +62,26 @@
   <ItemGroup>
     <Compile Include="Manager\LogManager.cs" />
     <Compile Include="Manager\TestConfigManager.cs" />
-    <Compile Include="PageObjectModel\Center\CenterFireScrollBar.cs" />
+    <Compile Include="PageObjectModel\Center\Center_InitClasses.cs" />
     <Compile Include="PageObjectModel\Center\LiveEvents.cs" />
     <Compile Include="PageObjectModel\Center\Slider.cs" />
     <Compile Include="PageObjectModel\East\BetSlip.cs" />
-    <Compile Include="PageObjectModel\East\EastFireScrollBar.cs" />
+    <Compile Include="PageObjectModel\East\East_Initclasses.cs" />
     <Compile Include="PageObjectModel\East\Right_Banners.cs" />
+    <Compile Include="PageObjectModel\ExternalPages\External_InitClasses.cs" />
     <Compile Include="PageObjectModel\North\LangBar.cs" />
     <Compile Include="PageObjectModel\North\LoginPage.cs" />
     <Compile Include="PageObjectModel\North\RegisterPage.cs" />
-    <Compile Include="PageObjectModel\North\TempMail.cs" />
-    <Compile Include="PageObjectModel\North\TopBar.cs" />
+    <Compile Include="PageObjectModel\ExternalPages\TempMail.cs" />
+    <Compile Include="PageObjectModel\North\North_InitClasses.cs" />
     <Compile Include="PageObjectModel\Center\TopEvents.cs" />
     <Compile Include="PageObjectModel\Center\UpcomingEvents.cs" />
-    <Compile Include="PageObjectModel\west\Left_Banners.cs" />
-    <Compile Include="PageObjectModel\west\SearchGame.cs" />
-    <Compile Include="PageObjectModel\west\SportCounter.cs" />
-    <Compile Include="PageObjectModel\west\StatusFilter.cs" />
-    <Compile Include="PageObjectModel\west\TtimeFilter.cs" />
+    <Compile Include="PageObjectModel\West\Left_Banners.cs" />
+    <Compile Include="PageObjectModel\West\SearchGame.cs" />
+    <Compile Include="PageObjectModel\West\SportCounter.cs" />
+    <Compile Include="PageObjectModel\West\StatusFilter.cs" />
+    <Compile Include="PageObjectModel\West\TtimeFilter.cs" />
+    <Compile Include="PageObjectModel\West\West_InitClasses.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Manager\PageObjectManager.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="TestCases\North\LoginTest.cs" />
     <Compile Include="TestCases\North\RegisterTest.cs" />
     <Compile Include="Manager\BrowsersFactory.cs" />
+    <Compile Include="TestCases\TestBae\TestBse.cs" />
     <Compile Include="WebDriverExtension.cs" />
   </ItemGroup>
   <ItemGroup>

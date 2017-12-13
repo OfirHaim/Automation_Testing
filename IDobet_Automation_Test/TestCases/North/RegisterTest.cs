@@ -18,15 +18,18 @@ namespace IDobet_Automation_Test.TestCases.North
         {
             TestConfigManager.Instance.Initialize(ConfigurationManager.AppSettings["BrowserName"]);
             BrowsersFactory.Instance.OpenNewTab();
-            PageObjectManager.Instance.topBar.tempMail.TempMail1();
+            PageObjectManager.Instance.external_InitClasses.tempMail.GetMail();
         }
 
         [Test]
         public static void RegisterTests()
         {
-            PageObjectManager.Instance.topBar.registerPage.Register(PageObjectManager.Instance.topBar.tempMail.Email,
-                    ConfigurationManager.AppSettings["Password"],
-                    ConfigurationManager.AppSettings["Promtion"]);
+            PageObjectManager.Instance.north_InitClasses.registerPage.Register(
+                PageObjectManager.Instance.external_InitClasses.tempMail.email,
+                ConfigurationManager.AppSettings["Password"],
+                ConfigurationManager.AppSettings["Promtion"]);
+            TestConfigManager.Instance.driver.SwitchTo().Window(BrowsersFactory.Instance.newTabInstance);
+            PageObjectManager.Instance.external_InitClasses.tempMail.WaitToEmail();
         }
 
         [TearDown]

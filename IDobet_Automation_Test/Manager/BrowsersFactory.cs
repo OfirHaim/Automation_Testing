@@ -188,7 +188,7 @@ namespace IDobet_Automation_Test.Manager
             //TestConfigManager.Instance.driver.ExecuteJavaScript("window.close();");
 
             //// and switch our WebDriver back to the original tab's window handle
-//            TestConfigManager.Instance.driver.SwitchTo().Window(originalTabInstance);
+                //TestConfigManager.Instance.driver.SwitchTo().Window(originalTabInstance);
 
             //// and have our WebDriver focus on the main document in the page to send commands to 
             //TestConfigManager.Instance.driver.SwitchTo().DefaultContent();

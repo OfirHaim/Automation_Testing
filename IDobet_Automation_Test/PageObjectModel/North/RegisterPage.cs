@@ -37,6 +37,9 @@ namespace IDobet_Automation_Test.PageObjectModel.North
 
         [FindsBy(How = How.CssSelector, Using = ".register-modal form .button-row button[type=submit]")]
         private IWebElement ClickSignup { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".modal-container .success-popup button")]
+        private IWebElement btnOKSuccess { get; set; }
         #endregion
 
         #region RegisterPageMethod
@@ -85,6 +88,12 @@ namespace IDobet_Automation_Test.PageObjectModel.North
             ClickSignup.Click();
         }
 
+        private void clickOKSuccess()
+        {
+            LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Click On OK from Success Alert");
+            btnOKSuccess.Click();
+        }
+
         public void Register(string userName, string password, string promtionCode)
         {
             TestConfigManager.Instance.assertBefore(By.XPath("/html/body/app/div/section/topbar/header/nav/ul/li[5]"));
@@ -95,7 +104,9 @@ namespace IDobet_Automation_Test.PageObjectModel.North
             this.RegisterPromotionCode(promtionCode);
             this.RegisterIAccept();
             this.RegisterClickSignup();
-            TestConfigManager.Instance.assertAfter(By.ClassName("user-menu"));
+            TestConfigManager.Instance.assertAfter(By.CssSelector(".modal-container .success-popup"));
+            this.clickOKSuccess();
+            //System.Threading.Thread.Sleep(2000);
         }
         #endregion
     }

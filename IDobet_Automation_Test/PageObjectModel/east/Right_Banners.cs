@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IDobet_Automation_Test.PageObjectModel.east
+namespace IDobet_Automation_Test.PageObjectModel.East
 {
     class Right_Banners
     {
