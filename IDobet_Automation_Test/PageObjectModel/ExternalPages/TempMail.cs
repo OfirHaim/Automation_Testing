@@ -41,9 +41,13 @@ namespace IDobet_Automation_Test.PageObjectModel.ExternalPages
         /******************************************************************************
                                     TempMailMethod
         *******************************************************************************/
-        private void NavigateToTempMail()
+        private void checkOpenTempMail()
         {
-            TestConfigManager.Instance.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["TempMail"]);
+            if (BrowsersFactory.Instance.newTabInstance == null)
+            {
+                BrowsersFactory.Instance.OpenNewTab();
+                TestConfigManager.Instance.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["TempMail"]);
+            }
         }
 
         private void ClickOnDelete()
@@ -64,7 +68,6 @@ namespace IDobet_Automation_Test.PageObjectModel.ExternalPages
                 TestConfigManager.Instance.assertBefore(By.LinkText("iDoBet Activation"));
                 emailArrive.FindElement(By.XPath("//*[@id='mails']/tbody/tr/td[3]/a")).Click();
                 System.Threading.Thread.Sleep(5000);
-
             }
             else
             {
@@ -81,20 +84,21 @@ namespace IDobet_Automation_Test.PageObjectModel.ExternalPages
             System.Threading.Thread.Sleep(22000);
         }
 
+        private void WaitToEmail()
+        {
+            enterToLink();
+            aactivationlink();
+        }
+
         public void GetMail()
         {
-            this.NavigateToTempMail();
+            this.checkOpenTempMail();
             this.ClickOnDelete();
             this.CopyMail();
             TestConfigManager.Instance.driver.SwitchTo().Window(BrowsersFactory.Instance.originalTabInstance);
             Console.WriteLine(this.email);
         }
 
-        public void WaitToEmail()
-        {
-            enterToLink();
-            aactivationlink();
-        }
         #endregion
     }
 }

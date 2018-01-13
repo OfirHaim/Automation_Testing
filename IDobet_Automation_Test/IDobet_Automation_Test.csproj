@@ -62,34 +62,45 @@
   <ItemGroup>
     <Compile Include="Manager\LogManager.cs" />
     <Compile Include="Manager\TestConfigManager.cs" />
-    <Compile Include="PageObjectModel\Center\Center_InitClasses.cs" />
-    <Compile Include="PageObjectModel\Center\LiveEvents.cs" />
-    <Compile Include="PageObjectModel\Center\Slider.cs" />
-    <Compile Include="PageObjectModel\East\BetSlip.cs" />
-    <Compile Include="PageObjectModel\East\East_Initclasses.cs" />
-    <Compile Include="PageObjectModel\East\Right_Banners.cs" />
+    <Compile Include="PageObjectModel\MainView\Center\MainCenter_InitClasses.cs" />
+    <Compile Include="PageObjectModel\MainView\Center\LiveEvents.cs" />
+    <Compile Include="PageObjectModel\MainView\Center\Slider.cs" />
+    <Compile Include="PageObjectModel\MainView\East\BetSlip.cs" />
+    <Compile Include="PageObjectModel\MainView\East\MainEast_Initclasses.cs" />
+    <Compile Include="PageObjectModel\MainView\East\Right_Banners.cs" />
     <Compile Include="PageObjectModel\ExternalPages\External_InitClasses.cs" />
-    <Compile Include="PageObjectModel\North\LangBar.cs" />
-    <Compile Include="PageObjectModel\North\LoginPage.cs" />
-    <Compile Include="PageObjectModel\North\RegisterPage.cs" />
+    <Compile Include="PageObjectModel\MainView\North\Login.cs" />
+    <Compile Include="PageObjectModel\MainView\North\MyBets.cs" />
+    <Compile Include="PageObjectModel\MainView\North\RegistePager.cs" />
     <Compile Include="PageObjectModel\ExternalPages\TempMail.cs" />
-    <Compile Include="PageObjectModel\North\North_InitClasses.cs" />
-    <Compile Include="PageObjectModel\Center\TopEvents.cs" />
-    <Compile Include="PageObjectModel\Center\UpcomingEvents.cs" />
-    <Compile Include="PageObjectModel\West\Left_Banners.cs" />
-    <Compile Include="PageObjectModel\West\SearchGame.cs" />
-    <Compile Include="PageObjectModel\West\SportCounter.cs" />
-    <Compile Include="PageObjectModel\West\StatusFilter.cs" />
-    <Compile Include="PageObjectModel\West\TtimeFilter.cs" />
-    <Compile Include="PageObjectModel\West\West_InitClasses.cs" />
+    <Compile Include="PageObjectModel\MainView\North\MainNorth_InitClasses.cs" />
+    <Compile Include="PageObjectModel\MainView\Center\TopEvents.cs" />
+    <Compile Include="PageObjectModel\MainView\Center\UpcomingEvents.cs" />
+    <Compile Include="PageObjectModel\MainView\West\Left_Banners.cs" />
+    <Compile Include="PageObjectModel\MainView\West\SearchGame.cs" />
+    <Compile Include="PageObjectModel\MainView\West\SportCounter.cs" />
+    <Compile Include="PageObjectModel\MainView\West\StatusFilter.cs" />
+    <Compile Include="PageObjectModel\MainView\West\TtimeFilter.cs" />
+    <Compile Include="PageObjectModel\MainView\West\MainWest_InitClasses.cs" />
+    <Compile Include="PageObjectModel\UserView\Center\AccountStatement.cs" />
+    <Compile Include="PageObjectModel\UserView\Center\Bonuses.cs" />
+    <Compile Include="PageObjectModel\UserView\Center\UserCenter_InitClasses.cs" />
+    <Compile Include="PageObjectModel\UserView\Center\Deposit.cs" />
+    <Compile Include="PageObjectModel\UserView\Center\MyBets.cs" />
+    <Compile Include="PageObjectModel\UserView\Center\UpdateProfile.cs" />
+    <Compile Include="PageObjectModel\UserView\Center\Withdraw.cs" />
+    <Compile Include="PageObjectModel\UserView\West\UserCard.cs" />
+    <Compile Include="PageObjectModel\UserView\West\UserMenu.cs" />
+    <Compile Include="PageObjectModel\UserView\West\UserWest_InitClasses.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Manager\PageObjectManager.cs" />
-    <Compile Include="TestCases\East\PlaceBetTestcs.cs" />
-    <Compile Include="TestCases\North\LoginTest.cs" />
-    <Compile Include="TestCases\North\RegisterTest.cs" />
+    <Compile Include="TestCases\MainViewTest\PlaceBetTestcs.cs" />
+    <Compile Include="TestCases\MainViewTest\LoginTest.cs" />
+    <Compile Include="TestCases\MainViewTest\RegisterTest.cs" />
     <Compile Include="Manager\BrowsersFactory.cs" />
-    <Compile Include="TestCases\TestBae\TestBse.cs" />
+    <Compile Include="TestCases\TestBse.cs" />
+    <Compile Include="TestCases\UserViewTest\EditProfileTest.cs" />
     <Compile Include="WebDriverExtension.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +112,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestCases\Center\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.33.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
