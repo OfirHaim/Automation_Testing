@@ -15,8 +15,6 @@ namespace IDobet_Automation_Test.PageObjectModel.MainView.North
         public RegistePager registerPage { get; set; }
         public MyBets mybets { get; set; }
 
-
-
         public MainNorth_InitClasses(IWebDriver driver)
         {
             loginPage = new Login();

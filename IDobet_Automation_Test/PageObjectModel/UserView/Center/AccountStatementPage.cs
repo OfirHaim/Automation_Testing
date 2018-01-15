@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IDobet_Automation_Test.PageObjectModel.UserView.Center
 {
-    public class MyBets
+    public class AccountStatementPage
     {
     }
 }

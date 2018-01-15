@@ -23,7 +23,8 @@ namespace IDobet_Automation_Test.TestCases.UserViewTest
         [Test]
         public void editProfileTest()
         {
-            PageObjectManager.Instance.userWest_InitClasses.userMenu.clickDepsoit();
+            PageObjectManager.Instance.userWest_InitClasses.userMenu.clickEditProfile();
+            PageObjectManager.Instance.userCenter_InitClasses.editProfilePage.changePassword("1q2w3e4r", "1q2w3e4r", "1q2w3e4r");
         }
 
         [TearDown]

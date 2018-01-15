@@ -30,7 +30,7 @@ namespace IDobet_Automation_Test.PageObjectModel.MainView.North
         }
         public void clickMyBets()
         {
-            TestConfigManager.Instance.assertBefore(By.XPath("/html/body/app/div/section/topbar/header/nav/ul/li[6]/a"));
+            //TestConfigManager.Instance.assertBefore(By.XPath("/html/body/app/div/section/topbar/header/nav/ul/li[6]/a"));
             this.clickMyBetsTopBar();
         }
         #endregion

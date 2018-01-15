@@ -1,0 +1,10 @@
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\bin\Debug\IDobet_Automation_Test_GUI.exe.config
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\bin\Debug\IDobet_Automation_Test_GUI.exe
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\bin\Debug\IDobet_Automation_Test_GUI.pdb
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\obj\Debug\IDobet_Automation_Test_GUI.csprojResolveAssemblyReference.cache
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\obj\Debug\IDobet_Automation_Test_GUI.Form1.resources
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\obj\Debug\IDobet_Automation_Test_GUI.Properties.Resources.resources
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\obj\Debug\IDobet_Automation_Test_GUI.csproj.GenerateResource.Cache
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\obj\Debug\IDobet_Automation_Test_GUI.csproj.CoreCompileInputs.cache
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\obj\Debug\IDobet_Automation_Test_GUI.exe
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test_GUI\obj\Debug\IDobet_Automation_Test_GUI.pdb

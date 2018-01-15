@@ -48,10 +48,10 @@ namespace IDobet_Automation_Test.PageObjectModel.UserView.West
 
         #region UserMenuPageMethod
         /******************************************************************************
-                                    UserMenuPageMethod
+                                    UserMenuMethod
         *******************************************************************************/
 
-        public void editProfileUserMenu()
+        public void clickEditProfile()
         {
             editProfilebtn.Click();
             LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "click on editProfile button");

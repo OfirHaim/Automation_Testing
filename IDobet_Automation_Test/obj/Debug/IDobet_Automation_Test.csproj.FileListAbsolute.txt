@@ -12,3 +12,4 @@ C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\bin\Debug\W
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.csproj.CoreCompileInputs.cache
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.exe
 C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.pdb
+C:\Users\ofir\Source\Repos\Automation_Testing\IDobet_Automation_Test\obj\Debug\IDobet_Automation_Test.csprojResolveAssemblyReference.cache
