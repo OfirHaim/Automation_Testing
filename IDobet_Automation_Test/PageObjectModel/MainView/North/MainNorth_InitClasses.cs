@@ -12,13 +12,13 @@ namespace IDobet_Automation_Test.PageObjectModel.MainView.North
     public class MainNorth_InitClasses
     {
         public Login loginPage { get; set; }
-        public RegistePager registerPage { get; set; }
+        public Registe registerPage { get; set; }
         public MyBets mybets { get; set; }
 
         public MainNorth_InitClasses(IWebDriver driver)
         {
             loginPage = new Login();
-            registerPage = new RegistePager();
+            registerPage = new Registe();
             mybets = new MyBets();
             PageFactory.InitElements(driver, this);
             PageFactory.InitElements(driver, loginPage);

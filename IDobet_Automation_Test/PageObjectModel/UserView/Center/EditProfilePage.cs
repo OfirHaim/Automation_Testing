@@ -64,21 +64,16 @@ namespace IDobet_Automation_Test.PageObjectModel.UserView.Center
                                     EditProfileMethod
         *******************************************************************************/
 
-        public void changePassword(string oldPassword, string newPassword, string confirmPassword)
+        public void changePasswordValid(string oldPassword, string newPassword, string confirmPassword)
         {
             changePasswordbtn.Click();
+            MyAssert.ElementFoundByClassName("open");            
             yourPasswordField.SendKeys(oldPassword);
-            System.Threading.Thread.Sleep(2000);
             newPasswordField.SendKeys(newPassword);
-            System.Threading.Thread.Sleep(2000);
             confirmPasswordField.SendKeys(confirmPassword);
-            System.Threading.Thread.Sleep(2000);
             saveBtnPassword.Click();
-            System.Threading.Thread.Sleep(2000);
-
             LogManager.Instance.WriteToLog(LogManager.elogLevel.Debug, "Click on Change Password");
         }
-
         #endregion
     }
 }

@@ -1,8 +1,10 @@
 ﻿using IDobet_Automation_Test.Configiruation;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +23,10 @@ namespace IDobet_Automation_Test.TestCases.UserViewTest
         }
 
         [Test]
-        public void editProfileTest()
+        public void changePasswordValid()
         {
             PageObjectManager.Instance.userWest_InitClasses.userMenu.clickEditProfile();
-            PageObjectManager.Instance.userCenter_InitClasses.editProfilePage.changePassword("1q2w3e4r", "1q2w3e4r", "1q2w3e4r");
+            PageObjectManager.Instance.userCenter_InitClasses.editProfilePage.changePasswordValid("1q2w3e4r", "1q2w3e4r", "1q2w3e4r");
         }
 
         [TearDown]

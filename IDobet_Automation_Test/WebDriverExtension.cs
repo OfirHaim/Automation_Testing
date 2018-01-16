@@ -108,4 +108,11 @@ namespace IDobet_Automation_Test
             }
         }
     }
+    public static class MyAssert
+    {
+        public static void ElementFoundByClassName(string className)
+        {
+            Assert.IsTrue(WebDriverExtension.SeleniumSetMethods.IsFound(By.ClassName(className)));
+        }
+    }
 }
